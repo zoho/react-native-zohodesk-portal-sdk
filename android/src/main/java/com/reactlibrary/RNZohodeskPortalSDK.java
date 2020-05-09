@@ -8,14 +8,15 @@ import com.zoho.desk.asap.api.ZDPortalCallback;
 import com.zoho.desk.asap.api.ZDPortalException;
 import com.zoho.desk.asap.api.ZohoDeskPortalSDK;
 
-public class RNZohoDeskPortalSDK extends ReactContextBaseJavaModule {
+public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
     private ZohoDeskPortalSDK portalSDK;
 
-    public RNZohoDeskPortalSDK(ReactApplicationContext reactContext) {
+    public RNZohodeskPortalSDK(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
+        portalSDK = ZohoDeskPortalSDK.getInstance(reactContext.getApplicationContext());
     }
 
     @Override
@@ -44,16 +45,16 @@ public class RNZohoDeskPortalSDK extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void setUserToken(String userToken, final Callback callback) {
+    public void setUserToken(String userToken, final Callback successCallabck, final Callback errorCallback) {
         portalSDK.setUserToken(userToken, new ZDPortalCallback.SetUserCallback() {
             @Override
             public void onUserSetSuccess() {
-                callback.invoke();
+                successCallabck.invoke();
             }
 
             @Override
             public void onException(ZDPortalException e) {
-                callback.invoke();
+                errorCallback.invoke();
             }
         });
     }

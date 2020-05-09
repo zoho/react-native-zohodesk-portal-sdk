@@ -8,12 +8,12 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
-import com.facebook.react.bridge.JavaScriptModule;
 
-public class ZohoDeskPortalSdkPackage implements ReactPackage {
+public class RNZohodeskPortalSdkPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Arrays.<NativeModule>asList(new RNZohoDeskPortalSDK(reactContext), new RNZDPortalHome(reactContext));
+        return Arrays.<NativeModule>asList(new RNZohodeskPortalSDK(reactContext), new RNZDPortalHome(reactContext),
+                new RNZDPortalKB(reactContext), new RNZDPortalCommunity(reactContext), new RNZDPortalTickets(reactContext));
     }
 
     @Override
