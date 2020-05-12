@@ -13,7 +13,8 @@ public class RNZohodeskPortalSdkPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(new RNZohodeskPortalSDK(reactContext), new RNZDPortalHome(reactContext),
-                new RNZDPortalKB(reactContext), new RNZDPortalCommunity(reactContext), new RNZDPortalTickets(reactContext));
+                new RNZDPortalKB(reactContext), new RNZDPortalCommunity(reactContext), new RNZDPortalTickets(reactContext),
+                new RNZDPortalSubmitTicket(reactContext), new RNZDPortalChat(reactContext));
     }
 
     @Override

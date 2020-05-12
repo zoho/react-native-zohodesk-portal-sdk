@@ -6,7 +6,11 @@ module.exports = {
       RNZohoDeskPortalSDK.initialise(orgId, appId, dc);
     },
 
-    setUserToken: function(userToken) {
-      RNZohoDeskPortalSDK.setUserToken(userToken);
+    setUserToken: function(userToken, successCallback, errorCallback) {
+      RNZohoDeskPortalSDK.setUserToken(userToken, successCallback, errorCallback);
+    },
+
+    logout: function(successCallback, errorCallback) {
+      RNZohoDeskPortalSDK.logout(successCallback, errorCallback);
     }
 }
