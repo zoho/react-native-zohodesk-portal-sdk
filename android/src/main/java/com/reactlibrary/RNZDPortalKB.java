@@ -3,7 +3,7 @@ package com.reactlibrary;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.zoho.desk.asap.ZDPortalHome;
+import com.zoho.desk.asap.kb.ZDPortalKB;
 
 public class RNZDPortalKB extends ReactContextBaseJavaModule {
 
@@ -20,6 +20,6 @@ public class RNZDPortalKB extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void show() {
-        ZDPortalHome.show(reactContext.getCurrentActivity());
+        ZDPortalKB.show(reactContext.getCurrentActivity());
     }
 }

@@ -23,6 +23,7 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     private final ReactApplicationContext reactContext;
     private static String firebaseInstanceId = "";
     private static boolean isInitDone = false;
+    private static int themeResId = -1;
 
     public RNZohodeskPortalSDK(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -68,6 +69,9 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
         portalSDK.initDesk(Long.valueOf(orgId), appId, dc);
         if(!TextUtils.isEmpty(firebaseInstanceId)) {
             portalSDK.enablePush(firebaseInstanceId);
+        }
+        if(themeResId != -1) {
+            ZDPortalConfiguration.setThemeResource(themeResId);
         }
     }
 
@@ -140,5 +144,9 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                 }
             });
         }
+    }
+
+    public static void setThemeResource(int resourceId) {
+        themeResId = resourceId;
     }
 }
