@@ -67,9 +67,6 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                 break;
         }
         portalSDK.initDesk(Long.valueOf(orgId), appId, dc);
-        if(!TextUtils.isEmpty(firebaseInstanceId)) {
-            portalSDK.enablePush(firebaseInstanceId);
-        }
         if(themeResId != -1) {
             ZDPortalConfiguration.setThemeResource(themeResId);
         }
@@ -118,6 +115,32 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                             errorCallback.invoke("Logout Failure");
                         }
                     });
+                }
+            });
+        }
+    }
+
+    @ReactMethod
+    public void enablePush() {
+        if(!TextUtils.isEmpty(firebaseInstanceId) && getCurrentActivity() != null) {
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.post(new Runnable() {
+                public void run() {
+                    ZohoDeskPortalSDK deskPortalSDK = ZohoDeskPortalSDK.getInstance(getCurrentActivity().getApplicationContext());
+                    deskPortalSDK.enablePush(firebaseInstanceId);
+                }
+            });
+        }
+    }
+
+    @ReactMethod
+    public void disablePush() {
+        if(!TextUtils.isEmpty(firebaseInstanceId) && getCurrentActivity() != null) {
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.post(new Runnable() {
+                public void run() {
+                    ZohoDeskPortalSDK deskPortalSDK = ZohoDeskPortalSDK.getInstance(getCurrentActivity().getApplicationContext());
+                    deskPortalSDK.disablePush(firebaseInstanceId);
                 }
             });
         }

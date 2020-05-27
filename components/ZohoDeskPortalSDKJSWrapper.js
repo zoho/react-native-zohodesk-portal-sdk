@@ -10,6 +10,14 @@ module.exports = {
       RNZohoDeskPortalSDK.setUserToken(userToken, successCallback, errorCallback);
     },
 
+    enablePush: function() {
+      RNZohoDeskPortalSDK.enablePush();
+    },
+
+    disablePush: function() {
+      RNZohoDeskPortalSDK.disablePush();
+    },
+
     logout: function(successCallback, errorCallback) {
       RNZohoDeskPortalSDK.logout(successCallback, errorCallback);
     }
