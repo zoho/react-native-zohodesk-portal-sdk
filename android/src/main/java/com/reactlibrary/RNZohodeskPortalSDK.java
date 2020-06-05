@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -50,6 +51,12 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
 
     private static void initialiseDesk(Context application, String orgId, String appId, String dcStr) {
         isInitDone = true;
+        SharedPreferences preferences = application.getSharedPreferences("RNZohoDeskASAP", 0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("orgId", orgId);
+        editor.putString("appId", appId);
+        editor.putString("dcStr", dcStr);
+        editor.apply();
         ZohoDeskPortalSDK portalSDK = ZohoDeskPortalSDK.getInstance(application);
         ZohoDeskPortalSDK.DataCenter dc = ZohoDeskPortalSDK.DataCenter.US;
         switch (dcStr.toLowerCase()) {
@@ -155,14 +162,15 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
             ZDPortalConfiguration.handleNotification(application, extras, icon);
             return;
         }
-        SharedPreferences sharedPreferences = application.getSharedPreferences("ZohoDeskASAPSDK", 0);
-        final long orgId = sharedPreferences.getLong("orgId", -1);
+        SharedPreferences sharedPreferences = application.getSharedPreferences("RNZohoDeskASAP", 0);
+        final String orgId = sharedPreferences.getString("orgId", "");
         final String appId = sharedPreferences.getString("appId", "");
-        if (orgId != -1 && !TextUtils.isEmpty(appId)) {
+        final String dcStr = sharedPreferences.getString("dcStr", "");
+        if (!TextUtils.isEmpty(orgId) && !TextUtils.isEmpty(appId)) {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
                 public void run() {
-                    initialiseDesk(application, String.valueOf(orgId), appId, "us");
+                    initialiseDesk(application, orgId, appId, dcStr);
                     ZDPortalConfiguration.handleNotification(application, extras, icon);
                 }
             });
