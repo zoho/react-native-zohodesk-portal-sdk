@@ -1,6 +1,9 @@
 package com.reactlibrary;
 
 
+import android.os.Handler;
+import android.os.Looper;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -22,6 +25,11 @@ public class RNZDPortalChat extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void show() {
-        ZDPortalChat.show(reactContext.getCurrentActivity());
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            public void run() {
+                ZDPortalChat.show(reactContext.getCurrentActivity());
+            }
+        });
     }
 }
