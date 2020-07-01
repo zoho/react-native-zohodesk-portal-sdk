@@ -11,8 +11,7 @@
 
 #### Android
 
-    Open the android folder of your react-native project in Android Studio or any other platform for Android development.
-
+Open the android folder of your react-native project in Android Studio or any other platform for Android development.
 Add the following maven repository in the project level build.gradle file.
 
   ```allprojects {
@@ -20,5 +19,5 @@ Add the following maven repository in the project level build.gradle file.
   .....
       maven { url 'https://maven.zohodl.com' }
     }
-}```
+   }
   
