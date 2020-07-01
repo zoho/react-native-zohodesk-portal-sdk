@@ -21,6 +21,6 @@ Add the following maven repository in the project level build.gradle file.
     }
    }
    ```
-###Help Document
+### Help Document
   
 Help document is available at [Working with the ASAP SDK for React Native] (https://help.zoho.com/portal/en/kb/desk/for-developers/asap/react-native-sdk/articles/working-with-the-asap-sdk-for-react-native) 
