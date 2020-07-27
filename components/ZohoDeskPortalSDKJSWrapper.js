@@ -10,6 +10,10 @@ module.exports = {
       RNZohoDeskPortalSDK.setUserToken(userToken, successCallback, errorCallback);
     },
 
+    isUserSignedIn: function(callback) {
+      RNZohoDeskPortalSDK.isUserSignedIn(callback);
+    },
+
     enablePush: function() {
       RNZohoDeskPortalSDK.enablePush();
     },
@@ -20,5 +24,13 @@ module.exports = {
 
     logout: function(successCallback, errorCallback) {
       RNZohoDeskPortalSDK.logout(successCallback, errorCallback);
+    },
+
+    enableLogs: function() {
+      RNZohoDeskPortalSDK.enableLogs();
+    },
+
+    disableLogs: function() {
+      RNZohoDeskPortalSDK.disableLogs();
     }
 }

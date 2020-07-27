@@ -29,7 +29,6 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     public RNZohodeskPortalSDK(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-        ZohoDeskPortalSDK.Logger.enableLogs();
     }
 
     @Override
@@ -100,6 +99,14 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                     });
                 }
             });
+        }
+    }
+
+    @ReactMethod
+    public void isUserSignedIn(final Callback callback) {
+        if(getCurrentActivity() != null) {
+            ZohoDeskPortalSDK deskPortalSDK = ZohoDeskPortalSDK.getInstance(getCurrentActivity().getApplicationContext());
+            callback.invoke(deskPortalSDK.isUserSignedIn());
         }
     }
 
@@ -179,5 +186,15 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
 
     public static void setThemeResource(int resourceId) {
         themeResId = resourceId;
+    }
+
+    @ReactMethod
+    public void enableLogs() {
+        ZohoDeskPortalSDK.Logger.enableLogs();
+    }
+
+    @ReactMethod
+    public void disableLogs() {
+        ZohoDeskPortalSDK.Logger.disableLogs();
     }
 }
