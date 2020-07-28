@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D26AB5824D03E8F001D5F57 /* RNZohoDeskPortalSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D26AB5724D03E8F001D5F57 /* RNZohoDeskPortalSDK.m */; };
 		2D619E3724C733170069E8D5 /* RNZDPortalKB.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3624C733170069E8D5 /* RNZDPortalKB.m */; };
 		2D619E3A24C878160069E8D5 /* RNZDPortalChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3924C878150069E8D5 /* RNZDPortalChat.m */; };
 		2D619E3D24C878380069E8D5 /* RNZDPortalTickets.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3C24C878380069E8D5 /* RNZDPortalTickets.m */; };
@@ -29,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNZohodeskPortalSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNZohodeskPortalSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D26AB5624D03E8F001D5F57 /* RNZohoDeskPortalSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZohoDeskPortalSDK.h; sourceTree = "<group>"; };
+		2D26AB5724D03E8F001D5F57 /* RNZohoDeskPortalSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZohoDeskPortalSDK.m; sourceTree = "<group>"; };
 		2D619E3524C733170069E8D5 /* RNZDPortalKB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalKB.h; sourceTree = "<group>"; };
 		2D619E3624C733170069E8D5 /* RNZDPortalKB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalKB.m; sourceTree = "<group>"; };
 		2D619E3824C878150069E8D5 /* RNZDPortalChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalChat.h; sourceTree = "<group>"; };
@@ -65,6 +68,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				2D26AB5624D03E8F001D5F57 /* RNZohoDeskPortalSDK.h */,
+				2D26AB5724D03E8F001D5F57 /* RNZohoDeskPortalSDK.m */,
 				2D619E4424C8788B0069E8D5 /* RNZDPortalHome.h */,
 				2D619E4524C8788B0069E8D5 /* RNZDPortalHome.m */,
 				2D619E4124C878790069E8D5 /* RNZDPortalCommunity.h */,
@@ -139,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D619E3A24C878160069E8D5 /* RNZDPortalChat.m in Sources */,
+				2D26AB5824D03E8F001D5F57 /* RNZohoDeskPortalSDK.m in Sources */,
 				2D619E3D24C878380069E8D5 /* RNZDPortalTickets.m in Sources */,
 				2D619E3724C733170069E8D5 /* RNZDPortalKB.m in Sources */,
 				2D619E4324C878790069E8D5 /* RNZDPortalCommunity.m in Sources */,
