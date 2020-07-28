@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3E7B58A1CC2AC0600A0062D /* RNZohodeskPortalSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNZohodeskPortalSdk.m */; };
+		2D619E3724C733170069E8D5 /* RNZDPortalKB.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3624C733170069E8D5 /* RNZDPortalKB.m */; };
+		2D619E3A24C878160069E8D5 /* RNZDPortalChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3924C878150069E8D5 /* RNZDPortalChat.m */; };
+		2D619E3D24C878380069E8D5 /* RNZDPortalTickets.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3C24C878380069E8D5 /* RNZDPortalTickets.m */; };
+		2D619E4024C878540069E8D5 /* RNZDPortalSubmitTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3F24C878540069E8D5 /* RNZDPortalSubmitTicket.m */; };
+		2D619E4324C878790069E8D5 /* RNZDPortalCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E4224C878790069E8D5 /* RNZDPortalCommunity.m */; };
+		2D619E4624C8788B0069E8D5 /* RNZDPortalHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E4524C8788B0069E8D5 /* RNZDPortalHome.m */; };
+		B3E7B58A1CC2AC0600A0062D /* RNZohoDeskPortalSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNZohoDeskPortalSDK.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,8 +30,20 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNZohodeskPortalSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNZohodeskPortalSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3E7B5881CC2AC0600A0062D /* RNZohodeskPortalSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNZohodeskPortalSdk.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNZohodeskPortalSdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNZohodeskPortalSdk.m; sourceTree = "<group>"; };
+		2D619E3524C733170069E8D5 /* RNZDPortalKB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalKB.h; sourceTree = "<group>"; };
+		2D619E3624C733170069E8D5 /* RNZDPortalKB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalKB.m; sourceTree = "<group>"; };
+		2D619E3824C878150069E8D5 /* RNZDPortalChat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalChat.h; sourceTree = "<group>"; };
+		2D619E3924C878150069E8D5 /* RNZDPortalChat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalChat.m; sourceTree = "<group>"; };
+		2D619E3B24C878380069E8D5 /* RNZDPortalTickets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalTickets.h; sourceTree = "<group>"; };
+		2D619E3C24C878380069E8D5 /* RNZDPortalTickets.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalTickets.m; sourceTree = "<group>"; };
+		2D619E3E24C878540069E8D5 /* RNZDPortalSubmitTicket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalSubmitTicket.h; sourceTree = "<group>"; };
+		2D619E3F24C878540069E8D5 /* RNZDPortalSubmitTicket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalSubmitTicket.m; sourceTree = "<group>"; };
+		2D619E4124C878790069E8D5 /* RNZDPortalCommunity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalCommunity.h; sourceTree = "<group>"; };
+		2D619E4224C878790069E8D5 /* RNZDPortalCommunity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalCommunity.m; sourceTree = "<group>"; };
+		2D619E4424C8788B0069E8D5 /* RNZDPortalHome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalHome.h; sourceTree = "<group>"; };
+		2D619E4524C8788B0069E8D5 /* RNZDPortalHome.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalHome.m; sourceTree = "<group>"; };
+		B3E7B5881CC2AC0600A0062D /* RNZohoDeskPortalSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNZohoDeskPortalSDK.h; sourceTree = "<group>"; };
+		B3E7B5891CC2AC0600A0062D /* RNZohoDeskPortalSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNZohoDeskPortalSDK.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +68,20 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RNZohodeskPortalSdk.h */,
-				B3E7B5891CC2AC0600A0062D /* RNZohodeskPortalSdk.m */,
+				2D619E4424C8788B0069E8D5 /* RNZDPortalHome.h */,
+				2D619E4524C8788B0069E8D5 /* RNZDPortalHome.m */,
+				2D619E4124C878790069E8D5 /* RNZDPortalCommunity.h */,
+				2D619E4224C878790069E8D5 /* RNZDPortalCommunity.m */,
+				2D619E3E24C878540069E8D5 /* RNZDPortalSubmitTicket.h */,
+				2D619E3F24C878540069E8D5 /* RNZDPortalSubmitTicket.m */,
+				2D619E3B24C878380069E8D5 /* RNZDPortalTickets.h */,
+				2D619E3C24C878380069E8D5 /* RNZDPortalTickets.m */,
+				2D619E3824C878150069E8D5 /* RNZDPortalChat.h */,
+				2D619E3924C878150069E8D5 /* RNZDPortalChat.m */,
+				2D619E3524C733170069E8D5 /* RNZDPortalKB.h */,
+				2D619E3624C733170069E8D5 /* RNZDPortalKB.m */,
+				B3E7B5881CC2AC0600A0062D /* RNZohoDeskPortalSDK.h */,
+				B3E7B5891CC2AC0600A0062D /* RNZohoDeskPortalSDK.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +125,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -112,7 +143,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNZohodeskPortalSdk.m in Sources */,
+				2D619E3A24C878160069E8D5 /* RNZDPortalChat.m in Sources */,
+				2D619E3D24C878380069E8D5 /* RNZDPortalTickets.m in Sources */,
+				2D619E3724C733170069E8D5 /* RNZDPortalKB.m in Sources */,
+				2D619E4324C878790069E8D5 /* RNZDPortalCommunity.m in Sources */,
+				B3E7B58A1CC2AC0600A0062D /* RNZohoDeskPortalSDK.m in Sources */,
+				2D619E4624C8788B0069E8D5 /* RNZDPortalHome.m in Sources */,
+				2D619E4024C878540069E8D5 /* RNZDPortalSubmitTicket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +241,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",

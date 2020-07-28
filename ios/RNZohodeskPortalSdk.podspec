@@ -1,4 +1,3 @@
-
 Pod::Spec.new do |s|
   s.name         = "RNZohodeskPortalSdk"
   s.version      = "1.0.0"
@@ -6,18 +5,17 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   RNZohodeskPortalSdk
                    DESC
-  s.homepage     = ""
+  s.homepage         = "https://www.zoho.com/desk/"
   s.license      = "MIT"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "author" => "author@domain.cn" }
-  s.platform     = :ios, "7.0"
+  s.author             = { 'Bala' => 'balasubramanian.k@zohocorp.com'}
+  s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/author/RNZohodeskPortalSdk.git", :tag => "master" }
-  s.source_files  = "RNZohodeskPortalSdk/**/*.{h,m}"
+  s.source_files  = "*.{h,m}"
   s.requires_arc = true
 
 
   s.dependency "React"
-  #s.dependency "others"
+  s.dependency "ZohoDeskPortalServices", "2.0-beta"
 
 end
 
