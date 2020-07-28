@@ -13,7 +13,6 @@
 		2D619E4024C878540069E8D5 /* RNZDPortalSubmitTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3F24C878540069E8D5 /* RNZDPortalSubmitTicket.m */; };
 		2D619E4324C878790069E8D5 /* RNZDPortalCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E4224C878790069E8D5 /* RNZDPortalCommunity.m */; };
 		2D619E4624C8788B0069E8D5 /* RNZDPortalHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E4524C8788B0069E8D5 /* RNZDPortalHome.m */; };
-		B3E7B58A1CC2AC0600A0062D /* RNZohoDeskPortalSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNZohoDeskPortalSDK.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,8 +41,6 @@
 		2D619E4224C878790069E8D5 /* RNZDPortalCommunity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalCommunity.m; sourceTree = "<group>"; };
 		2D619E4424C8788B0069E8D5 /* RNZDPortalHome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalHome.h; sourceTree = "<group>"; };
 		2D619E4524C8788B0069E8D5 /* RNZDPortalHome.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalHome.m; sourceTree = "<group>"; };
-		B3E7B5881CC2AC0600A0062D /* RNZohoDeskPortalSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNZohoDeskPortalSDK.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNZohoDeskPortalSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNZohoDeskPortalSDK.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +77,6 @@
 				2D619E3924C878150069E8D5 /* RNZDPortalChat.m */,
 				2D619E3524C733170069E8D5 /* RNZDPortalKB.h */,
 				2D619E3624C733170069E8D5 /* RNZDPortalKB.m */,
-				B3E7B5881CC2AC0600A0062D /* RNZohoDeskPortalSDK.h */,
-				B3E7B5891CC2AC0600A0062D /* RNZohoDeskPortalSDK.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -147,7 +142,6 @@
 				2D619E3D24C878380069E8D5 /* RNZDPortalTickets.m in Sources */,
 				2D619E3724C733170069E8D5 /* RNZDPortalKB.m in Sources */,
 				2D619E4324C878790069E8D5 /* RNZDPortalCommunity.m in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* RNZohoDeskPortalSDK.m in Sources */,
 				2D619E4624C8788B0069E8D5 /* RNZDPortalHome.m in Sources */,
 				2D619E4024C878540069E8D5 /* RNZDPortalSubmitTicket.m in Sources */,
 			);
