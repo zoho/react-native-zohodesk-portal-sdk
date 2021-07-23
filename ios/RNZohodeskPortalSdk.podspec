@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
 
   s.dependency "React"
-  s.dependency "ZohoDeskPortalServices", "2.0-beta"
+  s.dependency "ZohoDeskPortalServices", "2.0.6"
 
 end
 
