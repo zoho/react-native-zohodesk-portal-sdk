@@ -32,5 +32,5 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation 'com.zoho.desk:asapsdk:2.0.5'
+    implementation 'com.zoho.desk:asapsdk:2.0.7'
 }
