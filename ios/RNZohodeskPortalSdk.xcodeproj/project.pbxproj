@@ -14,6 +14,7 @@
 		2D619E4024C878540069E8D5 /* RNZDPortalSubmitTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E3F24C878540069E8D5 /* RNZDPortalSubmitTicket.m */; };
 		2D619E4324C878790069E8D5 /* RNZDPortalCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E4224C878790069E8D5 /* RNZDPortalCommunity.m */; };
 		2D619E4624C8788B0069E8D5 /* RNZDPortalHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D619E4524C8788B0069E8D5 /* RNZDPortalHome.m */; };
+		D1636E8528FD16E000B1A2D8 /* RNZDPortalLiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = D1636E8428FD16E000B1A2D8 /* RNZDPortalLiveChat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,8 @@
 		2D619E4224C878790069E8D5 /* RNZDPortalCommunity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalCommunity.m; sourceTree = "<group>"; };
 		2D619E4424C8788B0069E8D5 /* RNZDPortalHome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNZDPortalHome.h; sourceTree = "<group>"; };
 		2D619E4524C8788B0069E8D5 /* RNZDPortalHome.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalHome.m; sourceTree = "<group>"; };
+		D1636E8328FD16E000B1A2D8 /* RNZDPortalLiveChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNZDPortalLiveChat.h; sourceTree = "<group>"; };
+		D1636E8428FD16E000B1A2D8 /* RNZDPortalLiveChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNZDPortalLiveChat.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				D1636E8328FD16E000B1A2D8 /* RNZDPortalLiveChat.h */,
+				D1636E8428FD16E000B1A2D8 /* RNZDPortalLiveChat.m */,
 				2D26AB5624D03E8F001D5F57 /* RNZohoDeskPortalSDK.h */,
 				2D26AB5724D03E8F001D5F57 /* RNZohoDeskPortalSDK.m */,
 				2D619E4424C8788B0069E8D5 /* RNZDPortalHome.h */,
@@ -150,6 +155,7 @@
 				2D619E4324C878790069E8D5 /* RNZDPortalCommunity.m in Sources */,
 				2D619E4624C8788B0069E8D5 /* RNZDPortalHome.m in Sources */,
 				2D619E4024C878540069E8D5 /* RNZDPortalSubmitTicket.m in Sources */,
+				D1636E8528FD16E000B1A2D8 /* RNZDPortalLiveChat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
