@@ -3,11 +3,17 @@
 
 ## Getting started
 
+From npm
+
 `$ npm install react-native-zohodesk-portal-sdk --save`
 
 ### Mostly automatic installation
 
 `$ react-native link react-native-zohodesk-portal-sdk`
+
+From Yarn
+
+`yarn add react-native-zohodesk-portal-sdk`
 
 #### Android
 
@@ -18,6 +24,7 @@ Add the following maven repository in the project level build.gradle file.
     repositories {
       google()
       maven { url 'https://maven.zohodl.com' }
+      maven { url "https://downloads.zohocdn.com/wmslibrary" }
     }
    }
    ```
