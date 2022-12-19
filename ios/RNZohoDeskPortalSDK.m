@@ -114,4 +114,8 @@ RCT_EXPORT_METHOD(disableLogs){
     [ZohoDeskPortalSDK disableLogs];
 }
 
+RCT_EXPORT_METHOD(setLanguage:(NSString * _Nonnull)lang){
+    [ZDPortalConfiguration setSDKLanguage:lang];
+}
+
 @end

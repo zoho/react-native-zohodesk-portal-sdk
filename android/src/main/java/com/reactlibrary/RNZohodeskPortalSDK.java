@@ -197,4 +197,9 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     public void disableLogs() {
         ZohoDeskPortalSDK.Logger.disableLogs();
     }
+
+    @ReactMethod
+    public void setLanguage(final String lang) {
+        ZDPortalConfiguration.setLanguage(lang);
+    }
 }

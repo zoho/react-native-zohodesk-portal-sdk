@@ -32,5 +32,9 @@ module.exports = {
 
     disableLogs: function() {
       RNZohoDeskPortalSDK.disableLogs();
+    },
+
+    setLanguage: function(lang) {
+      RNZohoDeskPortalSDK.setLanguage(lang);
     }
 }
