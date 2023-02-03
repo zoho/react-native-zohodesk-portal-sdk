@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
+import android.graphics.Color;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -15,16 +16,40 @@ import com.zoho.desk.asap.api.ZDPortalCallback;
 import com.zoho.desk.asap.api.ZDPortalException;
 import com.zoho.desk.asap.api.ZohoDeskPortalSDK;
 import com.zoho.desk.asap.common.ZDPortalConfiguration;
+import com.zoho.desk.asap.common.utils.ZDPTheme;
+import com.zoho.desk.asap.common.utils.ZDPThemeType;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 
 public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
 
+    public static final String colorPrimary = "colorPrimary";
+    public static final String colorPrimaryDark = "colorPrimaryDark";
+    public static final String colorAccent = "colorAccent";
+    public static final String windowBackground = "windowBackground";
+    public static final String itemBackground = "itemBackground";
+    public static final String textColorPrimary = "textColorPrimary";
+    public static final String textColorSecondary = "textColorSecondary";
+    public static final String colorOnPrimary = "colorOnPrimary";
+    public static final String iconTint = "iconTint";
+    public static final String divider = "divider";
+    public static final String listSelector = "listSelector";
+    public static final String hint = "hint";
+    public static final String formFieldBorder = "formFieldBorder";
+    public static final String errorColor = "errorColor";
+
+    public static final int systemTheme = 1;
+    public static final int lightTheme = 2;
+    public static final int darkTheme = 3;
+
     private final ReactApplicationContext reactContext;
-    private static String firebaseInstanceId = "";
+    private static String firebaseInstanceId;
     private static boolean isInitDone = false;
-    private static int themeResId = -1;
+    private static ZDPThemeType themeType = ZDPThemeType.SYSTEM;
+    private static ZDPTheme themeObj = null;
 
     public RNZohodeskPortalSDK(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -73,8 +98,9 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                 break;
         }
         portalSDK.initDesk(Long.valueOf(orgId), appId, dc);
-        if(themeResId != -1) {
-            ZDPortalConfiguration.setThemeResource(themeResId);
+        ZDPortalConfiguration.setThemeType(themeType);
+        if(themeObj != null) {
+            ZDPortalConfiguration.setThemeBuilder(themeObj);
         }
     }
 
@@ -184,8 +210,87 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
         }
     }
 
-    public static void setThemeResource(int resourceId) {
-        themeResId = resourceId;
+    public static void setThemeType(int type) {
+        switch (type) {
+            case systemTheme: {
+                themeType = ZDPThemeType.SYSTEM;
+                break;
+            }
+            case lightTheme: {
+                themeType = ZDPThemeType.LIGHT;
+                break;
+            }
+            case darkTheme: {
+                themeType = ZDPThemeType.DARK;
+                break;
+            }
+        }
+    }
+
+    public static void setThemeBuilder(HashMap<String, String> themeColors, boolean isDarkTheme) {
+        ZDPTheme.Builder themeBuilder = new ZDPTheme.Builder(isDarkTheme);
+        Set<String> keysSet = themeColors.keySet();
+        for (String key: keysSet) {
+            switch (key) {
+                case colorPrimary: {
+                    themeBuilder.setColorPrimary(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case colorPrimaryDark: {
+                    themeBuilder.setColorPrimaryDark(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case colorAccent: {
+                    themeBuilder.setColorAccent(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case windowBackground: {
+                    themeBuilder.setWindowBackground(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case itemBackground: {
+                    themeBuilder.setItemBackground(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case textColorPrimary: {
+                    themeBuilder.setTextColorPrimary(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case textColorSecondary: {
+                    themeBuilder.setTextColorSecondary(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case colorOnPrimary: {
+                    themeBuilder.setColorOnPrimary(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case iconTint: {
+                    themeBuilder.setIconTint(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case divider: {
+                    themeBuilder.setDividerColor(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case listSelector: {
+                    themeBuilder.setListSelectorColor(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case hint: {
+                    themeBuilder.setHintColor(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case formFieldBorder: {
+                    themeBuilder.setFormFieldBorder(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+                case errorColor: {
+                    themeBuilder.setErrorColor(Color.parseColor(themeColors.get(key)));
+                    break;
+                }
+            }
+        }
+        themeObj = themeBuilder.build();
     }
 
     @ReactMethod
