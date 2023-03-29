@@ -19,7 +19,7 @@
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(show){
-    [ZDPortalTicket showWithTitle:nil navigationMode:ZDPNavigationModePresent];
+    [ZDPortalTicket showWithTitle:nil navigationMode:ZDPNavigationModePresent isFromPush:NO pushId:@""];
 }
 
 @end

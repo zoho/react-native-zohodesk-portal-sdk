@@ -19,7 +19,7 @@
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(show){
-  [ZDPortalHome showWithConfiguration:nil andTitle:nil navigationMode:ZDPNavigationModePush];
+    [ZDPortalHome showWithTitle:nil navigationMode:ZDPNavigationModePush];
 }
 
 @end

@@ -11,7 +11,6 @@
 #import "RNZohoDeskPortalSDK.h"
 @import ZohoDeskPortalAPIKit;
 @import ZohoDeskPortalConfiguration;
-@import ZDThemeKit;
 
 @implementation RNZohoDeskPortalSDK
 
@@ -26,14 +25,14 @@
 
 + (void)setTheme:(RNZDThemeType) type{
     
-    ZDThemeType theme = ZDThemeTypeLight;
+    ZDPThemeType theme = ZDPThemeTypeLight;
     switch (type) {
         case RNZDThemeLight:
-            theme = ZDThemeTypeLight;
+            theme = ZDPThemeTypeLight;
         case RNZDThemeDark:
-            theme = ZDThemeTypeDark;
+            theme = ZDPThemeTypeDark;
     }
-    [ZDThemeManager setThemeWithType:theme];
+    [ZDPThemeManager setThemeWithType:theme];
 }
 
 - (dispatch_queue_t)methodQueue
@@ -56,6 +55,8 @@ RCT_EXPORT_METHOD(initialise:(NSString *)orgId appId:(NSString *)appId dc:(NSStr
         dataCenter = ZDPDataCenterEU;
     }else if ([dc isEqualToString:@"AU"]){
         dataCenter = ZDPDataCenterAU;
+    }else if ([dc isEqualToString:@"JP"]){
+        dataCenter = ZDPDataCenterJP;
     }
  
     [ZohoDeskPortalSDK initializeWithOrgID:orgId appID:appId dataCenter:dataCenter];
