@@ -32,5 +32,9 @@ module.exports = {
 
     disableLogs: function() {
       RNZohoDeskPortalSDK.disableLogs();
+    },
+
+    setJWTToken: function(jwtToken, successCallback, errorCallback) {
+      RNZohoDeskPortalSDK.setJWTToken(jwtToken, successCallback, errorCallback);
     }
 }

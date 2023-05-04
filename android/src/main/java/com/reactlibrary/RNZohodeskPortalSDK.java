@@ -107,24 +107,14 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     @ReactMethod
     public void setUserToken(final String userToken, final Callback successCallback, final Callback errorCallback) {
         if(getCurrentActivity() != null) {
-            Handler handler = new Handler();
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    ZohoDeskPortalSDK deskPortalSDK = ZohoDeskPortalSDK.getInstance(getCurrentActivity().getApplicationContext());
-                    deskPortalSDK.setUserToken(userToken, new ZDPortalCallback.SetUserCallback() {
-                        @Override
-                        public void onUserSetSuccess() {
-                            successCallback.invoke("User set Success");
-                        }
-
-                        @Override
-                        public void onException(ZDPortalException e) {
-                            errorCallback.invoke("User set Failure");
-                        }
-                    });
-                }
-            });
+            handleLogin(getCurrentActivity().getApplicationContext(), userToken, successCallback, errorCallback, false);
+        }
+    }
+    
+    @ReactMethod
+    public void setJWTToken(final String userToken, final Callback successCallback, final Callback errorCallback) {
+        if(getCurrentActivity() != null) {
+            handleLogin(getCurrentActivity().getApplicationContext(), userToken, successCallback, errorCallback, true);
         }
     }
 
@@ -301,5 +291,26 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     @ReactMethod
     public void disableLogs() {
         ZohoDeskPortalSDK.Logger.disableLogs();
+    }
+
+    private void handleLogin(Context context, String token, final Callback successCallback, final Callback errorCallback, boolean isJWTToken) {
+        Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    ZohoDeskPortalSDK deskPortalSDK = ZohoDeskPortalSDK.getInstance(context);
+                    deskPortalSDK.setUserToken(token, new ZDPortalCallback.SetUserCallback() {
+                        @Override
+                        public void onUserSetSuccess() {
+                            successCallback.invoke("User set Success");
+                        }
+
+                        @Override
+                        public void onException(ZDPortalException e) {
+                            errorCallback.invoke("User set Failure");
+                        }
+                    }, isJWTToken);
+                }
+            });
     }
 }
