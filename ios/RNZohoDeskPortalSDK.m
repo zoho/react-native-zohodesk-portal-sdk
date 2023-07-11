@@ -125,7 +125,6 @@ RCT_EXPORT_METHOD(enableLogs){
 }
 
 RCT_EXPORT_METHOD(disableLogs){
-    
 }
 
 @end
