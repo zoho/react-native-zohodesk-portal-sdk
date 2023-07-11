@@ -76,6 +76,18 @@ RCT_EXPORT_METHOD(setUserToken:(NSString *)userToken
     }];
 }
 
+RCT_EXPORT_METHOD(setJWTToken:(NSString *)jwtToken
+                  successCallback:(RCTResponseSenderBlock)successCallback
+                  errorCallback:(RCTResponseSenderBlock)errorCallback){
+    [ZohoDeskPortalSDK loginWithJWTToken:jwtToken onCompletion:^(BOOL isSuccess) {
+        if (isSuccess){
+            successCallback(@[[NSString stringWithFormat:@"User set Success"], @"User set Success"]);
+        }else{
+            errorCallback(@[[NSString stringWithFormat:@"User set Failure"], @"User set Failure"]);
+        }
+    }];
+}
+
 RCT_EXPORT_METHOD(logout:(RCTResponseSenderBlock)successCallback
                   errorCallback:(RCTResponseSenderBlock)errorCallback){
     [ZohoDeskPortalSDK logoutOnCompletion:^(BOOL isSuccess) {
@@ -109,11 +121,11 @@ RCT_EXPORT_METHOD(isUserSignedIn:(RCTResponseSenderBlock)callback)
 }
 
 RCT_EXPORT_METHOD(enableLogs){
-    
+    [ZohoDeskPortalSDK enableLogs];
 }
 
 RCT_EXPORT_METHOD(disableLogs){
-    [ZohoDeskPortalSDK disableLogs];
+    
 }
 
 @end

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RNZohodeskPortalSdk"
-  s.version      = "3.0.0-beta.3"
+  s.version      = "3.0.0-beta.10"
   s.summary      = "RNZohodeskPortalSdk"
   s.description  = <<-DESC
                   RNZohodeskPortalSdk
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
 
   s.dependency "React"
-  s.dependency "ZohoDeskPortalServices", "3.0.0-beta.3"
+  s.dependency "ZohoDeskPortalServices", "3.0.0-beta.10"
 
 end
 
