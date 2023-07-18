@@ -64,8 +64,7 @@ RCT_EXPORT_METHOD(initialise:(NSString *)orgId appId:(NSString *)appId dc:(NSStr
 
 RCT_EXPORT_METHOD(setUserToken:(NSString *)userToken
                   successCallback:(RCTResponseSenderBlock)successCallback
-                  errorCallback:(RCTResponseSenderBlock)errorCallback
-                  isJWTToken: (BOOL isSuccess))
+                  errorCallback:(RCTResponseSenderBlock)errorCallback)
 {
     [ZohoDeskPortalSDK loginWithUserToken:userToken onCompletion:^(BOOL isSuccess) {
         if (isSuccess){
