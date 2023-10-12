@@ -21,4 +21,8 @@ RCT_EXPORT_METHOD(show){
     [ZDPortalChat show];
 }
 
+RCT_EXPORT_METHOD(setGuestUserDetails:(NSString *)email name:(NSString *)name phone:(NSString *)phone){
+    [ZDPortalChat setGuestUserWithEmail:email displayName:name phoneNumber:phone];
+}
+
 @end

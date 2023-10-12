@@ -8,6 +8,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.zoho.desk.chat.ZDPortalChat;
+import com.zoho.desk.chat.ZDPortalChatUser;
 
 public class RNZDPortalChat extends ReactContextBaseJavaModule {
 
@@ -31,5 +32,14 @@ public class RNZDPortalChat extends ReactContextBaseJavaModule {
                 ZDPortalChat.show(reactContext.getCurrentActivity());
             }
         });
+    }
+
+    @ReactMethod
+    public void setGuestUserDetails(final String email, final String name, final String phone) {
+        ZDPortalChatUser user = new ZDPortalChatUser();
+        user.setEmail(email);
+        user.setName(name);
+        user.setPhone(phone);
+        ZDPortalChat.setGuestUserDetails(user);
     }
 }

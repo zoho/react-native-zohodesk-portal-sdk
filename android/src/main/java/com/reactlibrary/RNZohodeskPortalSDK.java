@@ -82,6 +82,7 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
         editor.putString("dcStr", dcStr);
         editor.apply();
         ZohoDeskPortalSDK portalSDK = ZohoDeskPortalSDK.getInstance(application);
+        ZohoDeskAPIImpl.setRefererHeader("react-native");
         ZohoDeskPortalSDK.DataCenter dc = ZohoDeskPortalSDK.DataCenter.US;
         switch (dcStr.toLowerCase()) {
             case "eu":
