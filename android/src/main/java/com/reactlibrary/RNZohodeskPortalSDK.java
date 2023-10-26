@@ -18,6 +18,7 @@ import com.zoho.desk.asap.api.ZohoDeskPortalSDK;
 import com.zoho.desk.asap.common.ZDPortalConfiguration;
 import com.zoho.desk.asap.common.utils.ZDPTheme;
 import com.zoho.desk.asap.common.utils.ZDPThemeType;
+import com.zoho.desk.asap.api.util.ZohoDeskAPIImpl;
 
 import java.util.HashMap;
 import java.util.Map;
