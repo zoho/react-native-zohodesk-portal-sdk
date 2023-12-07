@@ -301,7 +301,7 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                 @Override
                 public void run() {
                     ZohoDeskPortalSDK deskPortalSDK = ZohoDeskPortalSDK.getInstance(context);
-                    deskPortalSDK.setUserToken(token, new ZDPortalCallback.SetUserCallback() {
+                    ZDPortalCallback.SetUserCallback callback = new ZDPortalCallback.SetUserCallback() {
                         @Override
                         public void onUserSetSuccess() {
                             successCallback.invoke("User set Success");
@@ -311,7 +311,13 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                         public void onException(ZDPortalException e) {
                             errorCallback.invoke("User set Failure");
                         }
-                    }, isJWTToken);
+                    };
+                    if(isJWTToken) {
+                        deskPortalSDK.loginWithJWTToken(token, callback);
+                    } else {
+                        deskPortalSDK.loginWithUserToken(token, callback);
+                    }
+                    
                 }
             });
     }
