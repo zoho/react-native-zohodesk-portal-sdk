@@ -321,4 +321,10 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                 }
             });
     }
+
+    @ReactMethod
+    public void clearDeskPortalData() {
+        ZohoDeskPortalSDK deskPortalSDK = ZohoDeskPortalSDK.getInstance(getCurrentActivity().getApplicationContext());
+        deskPortalSDK.clearDeskPortalData();
+    }
 }

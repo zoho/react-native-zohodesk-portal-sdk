@@ -36,5 +36,9 @@ module.exports = {
 
     setJWTToken: function(jwtToken, successCallback, errorCallback) {
       RNZohoDeskPortalSDK.setJWTToken(jwtToken, successCallback, errorCallback);
+    },
+
+    clearDeskPortalData: function() {
+      RNZohoDeskPortalSDK.clearDeskPortalData();
     }
 }
