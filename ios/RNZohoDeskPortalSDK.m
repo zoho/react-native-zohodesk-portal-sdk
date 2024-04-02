@@ -126,4 +126,8 @@ RCT_EXPORT_METHOD(enableLogs){
 RCT_EXPORT_METHOD(disableLogs){
 }
 
+RCT_EXPORT_METHOD(clearDeskPortalData) {
+    [ZohoDeskPortalSDK clearAllLocalData];
+}
+
 @end
