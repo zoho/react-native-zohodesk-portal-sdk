@@ -1,25 +1,27 @@
-package com.reactlibrary;
+package com.zoho.desk.asap;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.zoho.desk.asap.kb.ZDPortalKB;
+import com.zoho.desk.asap.livechat.ZDPortalLiveChat;
 
-public class RNZDPortalKB extends ReactContextBaseJavaModule {
+public class RNZDPortalLiveChat extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
-    public RNZDPortalKB(ReactApplicationContext reactContext) {
+
+    public RNZDPortalLiveChat(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }
 
     @Override
     public String getName() {
-        return "RNZDPortalKB";
+        return "RNZDPortalLiveChat";
     }
 
     @ReactMethod
     public void show() {
-        ZDPortalKB.show(reactContext.getCurrentActivity());
+        ZDPortalLiveChat.show(reactContext.getCurrentActivity());
     }
+
 }

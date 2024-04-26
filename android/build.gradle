@@ -14,7 +14,7 @@ android {
     compileSdkVersion 32
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
@@ -30,5 +30,5 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation 'com.zoho.desk:asapsdk:3.0_BETA_19'
+    implementation 'com.zoho.desk:asapsdk:3.0_BETA_20'
 }

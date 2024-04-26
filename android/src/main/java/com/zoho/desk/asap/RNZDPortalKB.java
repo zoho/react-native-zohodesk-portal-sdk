@@ -1,26 +1,25 @@
-package com.reactlibrary;
+package com.zoho.desk.asap;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.zoho.desk.asap.asap_tickets.ZDPortalSubmitTicket;
+import com.zoho.desk.asap.kb.ZDPortalKB;
 
-public class RNZDPortalSubmitTicket extends ReactContextBaseJavaModule {
+public class RNZDPortalKB extends ReactContextBaseJavaModule {
 
     private final ReactApplicationContext reactContext;
-
-    public RNZDPortalSubmitTicket(ReactApplicationContext reactContext) {
+    public RNZDPortalKB(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }
 
     @Override
     public String getName() {
-        return "RNZDPortalSubmitTicket";
+        return "RNZDPortalKB";
     }
 
     @ReactMethod
     public void show() {
-        ZDPortalSubmitTicket.show(reactContext.getCurrentActivity());
+        ZDPortalKB.show(reactContext.getCurrentActivity());
     }
 }
