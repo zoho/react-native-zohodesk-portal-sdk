@@ -114,10 +114,6 @@ RCT_EXPORT_METHOD(disablePush){
     }
 }
 
-RCT_EXPORT_METHOD(clearDeskPortalData) {
-    [ZohoDeskPortalSDK clearAllLocalData];
-}
-
 RCT_EXPORT_METHOD(isUserSignedIn:(RCTResponseSenderBlock)callback)
 {
     callback(@[[NSNumber numberWithBool:[ZohoDeskPortalSDK isUserLoggedIn]], [NSNumber numberWithBool:[ZohoDeskPortalSDK isUserLoggedIn]]]);
