@@ -130,4 +130,53 @@ RCT_EXPORT_METHOD(clearDeskPortalData) {
     [ZohoDeskPortalSDK clearAllLocalData];
 }
 
+RCT_EXPORT_METHOD(getDepartments:(RCTResponseSenderBlock)callback) {
+    [ZohoDeskPortalSDK getDepartmentsOnCompletion:^(NSArray<Department *> * _Nonnull departments, NSError * _Nonnull error) {
+        if (error) {
+            callback(@[[NSNull null], error.localizedDescription]);
+        } else {
+            NSMutableArray *departmentArray = [NSMutableArray array];
+            for (Department *department in departments) {
+                NSDictionary *dict = @{
+                    @"photoURL": department.photoURL ?: @"",
+                    @"deptDescription": department.deptDescription ?: @"",
+                    @"name": department.name,
+                    @"id": department.id,
+                    @"nameInCustomerPortal": department.nameInCustomerPortal,
+                    @"layoutCount": @(department.layoutCount)
+                };
+                [departmentArray addObject:dict];
+            }
+            
+            callback(@[departmentArray, [NSNull null]]);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(getLayouts:(NSDictionary *)params callback:(RCTResponseSenderBlock)callback) {
+    [ZohoDeskPortalSDKTicket getLayouts:params onCompletion:^(NSArray<FormLayout *> * _Nullable layouts, NSError * _Nullable error) {
+        if (error) {
+            callback(@[[NSNull null], error.localizedDescription]);
+        } else {
+            NSMutableArray *layoutArray = [NSMutableArray array];
+            for (FormLayout *layout in layouts) {
+                NSDictionary *dict = @{
+                    @"departmentID": layout.departmentID,
+                    @"hasLogo": @(layout.hasLogo),
+                    @"id": layout.id,
+                    @"isDefaultLayout": @(layout.isDefaultLayout),
+                    @"isStandardLayout": @(layout.isStandardLayout),
+                    @"layoutDesc": layout.layoutDesc,
+                    @"layoutName": layout.layoutName,
+                    @"module": layout.module
+                };
+                [layoutArray addObject:dict];
+            }
+            
+            callback(@[layoutArray, [NSNull null]]);
+        }
+    }];
+    
+}
+
 @end
