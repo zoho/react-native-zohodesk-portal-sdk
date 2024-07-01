@@ -330,8 +330,11 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                         callback.invoke(layoutsArray, null);
                     }
                     @Override
-                    public void onException(ZDPortalException e) {
-                      callback.invoke(null,"failed");
+                    public void onException(ZDPortalException exception) {
+                        WritableMap errorMap = Arguments.createMap(); 
+                        errorMap.putInt("errorCode",exception.getErrorCode());
+                        errorMap.putString("errorMsg",exception.getErrorMsg());
+                        callback.invoke(null,errorMap);
                     }
                 };
             ZDPortalAPI.getLayouts(layoutsCallback,Converter.convertReadableMapToHashMap(params));
@@ -364,7 +367,10 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                 }
                 @Override
                 public void onException(ZDPortalException exception) {
-                    callback.invoke(null,"failed");
+                    WritableMap errorMap = Arguments.createMap(); 
+                    errorMap.putInt("errorCode",exception.getErrorCode());
+                    errorMap.putString("errorMsg",exception.getErrorMsg());
+                    callback.invoke(null,errorMap);
                 }
             };
              ZDPortalAPI.getDepartments(departmentsCallback,null);

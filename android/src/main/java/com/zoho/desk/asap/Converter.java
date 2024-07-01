@@ -1,15 +1,20 @@
 package com.zoho.desk.asap;
 
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableArray;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Converter {
     
@@ -34,7 +39,7 @@ public class Converter {
                         jsonObject.put(key, convertReadableMapToJson(readableMap.getMap(key)));
                         break;
                     case Array:
-                        jsonObject.put(key, readableMap.getArray(key).toArrayList());
+                        jsonObject.put(key, convertReadableArrayToJson(readableMap.getArray(key)));
                         break;
                     default:
                         break;
@@ -45,6 +50,37 @@ public class Converter {
         }
 
         return jsonObject;
+    }
+
+    public static JSONArray convertReadableArrayToJson(ReadableArray readableArray) {
+        JSONArray jsonArray = new JSONArray();
+        for (int i = 0; i < readableArray.size(); i++) {
+            try {
+                switch (readableArray.getType(i)) {
+                    case String:
+                        jsonArray.put(readableArray.getString(i));
+                        break;
+                    case Number:
+                        jsonArray.put(readableArray.getDouble(i));
+                        break;
+                    case Boolean:
+                        jsonArray.put(readableArray.getBoolean(i));
+                        break;
+                    case Map:
+                        jsonArray.put(convertReadableMapToJson(readableArray.getMap(i)));
+                        break;
+                    case Array:
+                        jsonArray.put(convertReadableArrayToJson(readableArray.getArray(i)));
+                        break;
+                    default:
+                        break;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return jsonArray;
     }
 
     public static HashMap<String, String> convertReadableMapToHashMap(ReadableMap readableMap) {
