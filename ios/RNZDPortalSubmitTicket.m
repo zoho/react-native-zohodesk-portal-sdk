@@ -31,8 +31,8 @@ RCT_EXPORT_METHOD(preFillTicketFields:(NSArray *)paramsDicts) {
         
         NSMutableArray<ZDCustomizedTicketField *> *fields = [NSMutableArray array];
         for (NSDictionary *customFieldValue in customizedFieldsArray) {
-            NSString *fieldName = customFieldValue[@"fieldName"];
-            NSString *value = customFieldValue[@"value"];
+            NSString *fieldName = customFieldValue[@"fieldApiName"];
+            NSString *value = customFieldValue[@"fieldValue"];
             BOOL isEditable = [customFieldValue[@"isEditable"] boolValue];
             
             ZDCustomizedTicketField *field = [[ZDCustomizedTicketField alloc] initWithFieldName:fieldName value:value isEditable:isEditable];

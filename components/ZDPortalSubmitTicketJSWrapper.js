@@ -25,6 +25,19 @@ class ZDVisibleTicketField {
   }
 }
 
+function validateTicketForms(forms) {
+  return (Array.isArray(forms) && forms.every(form =>  
+      form instanceof ZDCustomizedTicketForm &&
+      Array.isArray(form.customizedTicketFields) &&
+      form.customizedTicketFields.every(field => field instanceof ZDCustomizedTicketField)
+    )
+  )
+}
+
+function validateVisibleTicketField(visibleFieldsList) {
+    return (Array.isArray(visibleFieldsList) && visibleFieldsList.every(field => field instanceof ZDVisibleTicketField))
+}
+
 module.exports = {
 
     show: function() {
@@ -32,6 +45,7 @@ module.exports = {
     },
 
     preFillTicketFields: function(forms) {
+      if (validateTicketForms(forms)) {
         const formsDicts = forms.map(form => ({
           departmentId: form.departmentId,
           layoutId: form.layoutId,
@@ -43,16 +57,19 @@ module.exports = {
         }));
       
         RNZDPortalSubmitTicket.preFillTicketFields(formsDicts);
+      }
     },
 
     setFieldsListTobeShown: function(visibleFieldsList) {
-      const fieldsList = visibleFieldsList.map(field => ({
-        departmentId: field.departmentId,
-        layoutId: field.layoutId,
-        fieldNames: field.fieldNames
-      }));
-  
-      RNZDPortalSubmitTicket.setFieldsListTobeShown(fieldsList);
+      if (validateVisibleTicketField(visibleFieldsList)) {
+        const fieldsList = visibleFieldsList.map(field => ({
+          departmentId: field.departmentId,
+          layoutId: field.layoutId,
+          fieldNames: field.fieldNames
+        }));
+    
+        RNZDPortalSubmitTicket.setFieldsListTobeShown(fieldsList);
+      }
     },
 
     ZDCustomizedTicketField,
