@@ -133,7 +133,11 @@ RCT_EXPORT_METHOD(clearDeskPortalData) {
 RCT_EXPORT_METHOD(getDepartments:(RCTResponseSenderBlock)callback) {
     [ZohoDeskPortalSDK getDepartmentsOnCompletion:^(NSArray<Department *> * _Nonnull departments, NSError * _Nonnull error) {
         if (error) {
-            callback(@[[NSNull null], error.localizedDescription]);
+            NSDictionary *errorObject = @{
+                @"errorCode" : @(error.code),
+                @"errorMsg" : error.localizedDescription
+            };
+            callback(@[[NSNull null], errorObject]);
         } else {
             NSMutableArray *departmentArray = [NSMutableArray array];
             for (Department *department in departments) {
@@ -156,7 +160,11 @@ RCT_EXPORT_METHOD(getDepartments:(RCTResponseSenderBlock)callback) {
 RCT_EXPORT_METHOD(getLayouts:(NSDictionary *)params callback:(RCTResponseSenderBlock)callback) {
     [ZohoDeskPortalSDKTicket getLayouts:params onCompletion:^(NSArray<FormLayout *> * _Nullable layouts, NSError * _Nullable error) {
         if (error) {
-            callback(@[[NSNull null], error.localizedDescription]);
+            NSDictionary *errorObject = @{
+                @"errorCode" : @(error.code),
+                @"errorMsg" : error.localizedDescription
+            };
+            callback(@[[NSNull null], errorObject]);
         } else {
             NSMutableArray *layoutArray = [NSMutableArray array];
             for (FormLayout *layout in layouts) {
