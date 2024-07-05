@@ -7,7 +7,7 @@ import com.zoho.desk.asap.asap_tickets.ZDPortalSubmitTicket;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import com.zoho.desk.asap.RNZDCustomizedTicketForm;
-import com.zoho.desk.asap.RNZDCustomizedTicketFieldList;
+import com.zoho.desk.asap.RNZDVisibleTicketField;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableArray;
@@ -52,9 +52,9 @@ public class RNZDPortalSubmitTicket extends ReactContextBaseJavaModule {
     public void setFieldsListTobeShown(final ReadableArray params){
         JSONArray jsonObject =  Converter.convertReadableArrayToJson(params);
         Gson gson = new Gson();
-        Type type = new TypeToken<List<RNZDCustomizedTicketFieldList>>() {}.getType();
-        List<RNZDCustomizedTicketFieldList> list = gson.fromJson(jsonObject.toString(), type);
-        for(RNZDCustomizedTicketFieldList ticketFieldLists : list) {
+        Type type = new TypeToken<List<RNZDVisibleTicketField>>() {}.getType();
+        List<RNZDVisibleTicketField> list = gson.fromJson(jsonObject.toString(), type);
+        for(RNZDVisibleTicketField ticketFieldLists : list) {
          ZDPortalSubmitTicket.setTicketsFieldsListTobeShown(ticketFieldLists.getFieldNames() , ticketFieldLists.getDepartmentId(), ticketFieldLists.getLayoutId()); 
         }
     }

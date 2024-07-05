@@ -1,13 +1,13 @@
 package com.zoho.desk.asap;
 import java.util.List;
 
-public class RNZDCustomizedTicketFieldList {
+public class RNZDVisibleTicketField {
     private String departmentId;
     private String layoutId;
     private List<String> fieldNames;
 
     // Constructor
-    public RNZDCustomizedTicketFieldList(String departmentId, String layoutId, List<String> ticketFieldsList) {
+    public RNZDVisibleTicketField(String departmentId, String layoutId, List<String> ticketFieldsList) {
         this.departmentId = departmentId;
         this.layoutId = layoutId;
         this.fieldNames = ticketFieldsList;

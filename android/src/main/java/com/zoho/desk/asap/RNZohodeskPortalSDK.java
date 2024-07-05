@@ -17,6 +17,8 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.Arguments;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zoho.desk.asap.api.ZDPortalCallback;
 import com.zoho.desk.asap.api.ZDPortalException;
 import com.zoho.desk.asap.api.ZohoDeskPortalSDK;
@@ -29,6 +31,7 @@ import com.zoho.desk.asap.api.response.Layout;
 import com.zoho.desk.asap.api.util.ZohoDeskAPIImpl;
 import com.zoho.desk.asap.api.response.DepartmentsList;
 import com.zoho.desk.asap.api.response.Department;
+ 
 
 import java.util.HashMap;
 import java.util.Map;
@@ -306,7 +309,7 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getLayouts(final ReadableMap params,final Callback callback) {
+    public void getLayouts(final ReadableMap params,final Callback successCallback,final Callback errorCallback) {
         Handler handler = new Handler();
         handler.post(new Runnable() {
             @Override
@@ -316,25 +319,18 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                     public void onLayoutsDownloaded(Layouts layoutsList) {
                         WritableArray layoutsArray = Arguments.createArray();
                         for(Layout layout:layoutsList.getData()) {
-                    WritableMap layoutMap = Arguments.createMap();
-                    layoutMap.putString("departmentID", layout.getDepartmentId());
-                    layoutMap.putBoolean("hasLogo", layout.getHasLogo());
-                    layoutMap.putString("id", layout.getId());
-                    layoutMap.putBoolean("isDefaultLayout", layout.isDefaultLayout());
-                    layoutMap.putBoolean("isStandardLayout", layout.isStandardLayout());
-                    layoutMap.putString("layoutDesc", layout.getLayoutDesc());
-                    layoutMap.putString("layoutName", layout.getLayoutName());
-                    layoutMap.putString("module", layout.getModule());
-                    layoutsArray.pushMap(layoutMap);   
+                        Gson gson = new Gson();
+                        String jsonString = gson.toJson(layout);
+                        layoutsArray.pushMap(Converter.toWritableMap(jsonString));   
                         }
-                        callback.invoke(layoutsArray, null);
+                        successCallback.invoke(layoutsArray);
                     }
                     @Override
                     public void onException(ZDPortalException exception) {
                         WritableMap errorMap = Arguments.createMap(); 
                         errorMap.putInt("errorCode",exception.getErrorCode());
                         errorMap.putString("errorMsg",exception.getErrorMsg());
-                        callback.invoke(null,errorMap);
+                        errorCallback.invoke(errorMap);
                     }
                 };
             ZDPortalAPI.getLayouts(layoutsCallback,Converter.convertReadableMapToHashMap(params));
@@ -343,7 +339,7 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getDepartments(final Callback callback) {
+    public void getDepartments(final Callback successCallback,final Callback errorCallback) {
          Handler handler = new Handler();
          handler.post(new Runnable(){
            @Override
@@ -354,15 +350,11 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                     WritableArray departmentsArray = Arguments.createArray();
                     for(Department department:departmentsList.getData()){
                       WritableMap departmentMap = Arguments.createMap(); 
-                      departmentMap.putString("photoURL",department.getPhotoURL());
-                      departmentMap.putString("name",department.getName());
-                      departmentMap.putString("deptDescription",department.getDescription());
-                      departmentMap.putString("id",department.getId());
-                      departmentMap.putString("nameInCustomerPortal",department.getNameInCustomerPortal());
-                      departmentMap.putString("layoutCount",department.getLayoutCount());
-                      departmentsArray.pushMap(departmentMap);
+                      Gson gson = new Gson();
+                      String jsonString = gson.toJson(department);
+                      departmentsArray.pushMap(Converter.toWritableMap(jsonString));
                     }
-                    callback.invoke(departmentsArray,null);
+                    successCallback.invoke(departmentsArray);
 
                 }
                 @Override
@@ -370,7 +362,7 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
                     WritableMap errorMap = Arguments.createMap(); 
                     errorMap.putInt("errorCode",exception.getErrorCode());
                     errorMap.putString("errorMsg",exception.getErrorMsg());
-                    callback.invoke(null,errorMap);
+                    errorCallback.invoke(errorMap);
                 }
             };
              ZDPortalAPI.getDepartments(departmentsCallback,null);
