@@ -130,20 +130,20 @@ RCT_EXPORT_METHOD(clearDeskPortalData) {
     [ZohoDeskPortalSDK clearAllLocalData];
 }
 
-RCT_EXPORT_METHOD(getDepartments:(RCTResponseSenderBlock)callback) {
+RCT_EXPORT_METHOD(getDepartments:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
     [ZohoDeskPortalSDK getDepartmentsOnCompletion:^(NSArray<Department *> * _Nonnull departments, NSError * _Nonnull error) {
         if (error) {
             NSDictionary *errorObject = @{
                 @"errorCode" : @(error.code),
                 @"errorMsg" : error.localizedDescription
             };
-            callback(@[[NSNull null], errorObject]);
+            errorCallback(@[errorObject]);
         } else {
             NSMutableArray *departmentArray = [NSMutableArray array];
             for (Department *department in departments) {
                 NSDictionary *dict = @{
                     @"photoURL": department.photoURL ?: @"",
-                    @"deptDescription": department.deptDescription ?: @"",
+                    @"description": department.deptDescription ?: @"",
                     @"name": department.name,
                     @"id": department.id,
                     @"nameInCustomerPortal": department.nameInCustomerPortal,
@@ -152,36 +152,36 @@ RCT_EXPORT_METHOD(getDepartments:(RCTResponseSenderBlock)callback) {
                 [departmentArray addObject:dict];
             }
             
-            callback(@[departmentArray, [NSNull null]]);
+            successCallback(@[departmentArray]);
         }
     }];
 }
 
-RCT_EXPORT_METHOD(getLayouts:(NSDictionary *)params callback:(RCTResponseSenderBlock)callback) {
+RCT_EXPORT_METHOD(getLayouts:(NSDictionary *)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
     [ZohoDeskPortalSDKTicket getLayouts:params onCompletion:^(NSArray<FormLayout *> * _Nullable layouts, NSError * _Nullable error) {
         if (error) {
             NSDictionary *errorObject = @{
                 @"errorCode" : @(error.code),
                 @"errorMsg" : error.localizedDescription
             };
-            callback(@[[NSNull null], errorObject]);
+            errorCallback(@[errorObject]);
         } else {
             NSMutableArray *layoutArray = [NSMutableArray array];
             for (FormLayout *layout in layouts) {
                 NSDictionary *dict = @{
-                    @"departmentID": layout.departmentID,
+                    @"departmentId": layout.departmentID,
                     @"hasLogo": @(layout.hasLogo),
                     @"id": layout.id,
                     @"isDefaultLayout": @(layout.isDefaultLayout),
                     @"isStandardLayout": @(layout.isStandardLayout),
                     @"layoutDesc": layout.layoutDesc,
                     @"layoutName": layout.layoutName,
-                    @"module": layout.module
+                    @"module": layout.module,
+                    @"photoURL": [NSNull null]
                 };
                 [layoutArray addObject:dict];
             }
-            
-            callback(@[layoutArray, [NSNull null]]);
+            successCallback(@[layoutArray]);
         }
     }];
     
