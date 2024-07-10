@@ -57,6 +57,8 @@ module.exports = {
         }));
       
         RNZDPortalSubmitTicket.preFillTicketFields(formsDicts);
+      } else {
+        console.log("The form inputs do not match")
       }
     },
 
@@ -69,6 +71,8 @@ module.exports = {
         }));
     
         RNZDPortalSubmitTicket.setFieldsListTobeShown(fieldsList);
+      } else {
+        console.log("Field input types do not match")
       }
     },
 
