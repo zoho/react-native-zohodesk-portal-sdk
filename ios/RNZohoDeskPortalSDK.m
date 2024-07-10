@@ -130,4 +130,61 @@ RCT_EXPORT_METHOD(clearDeskPortalData) {
     [ZohoDeskPortalSDK clearAllLocalData];
 }
 
+RCT_EXPORT_METHOD(getDepartments:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+    [ZohoDeskPortalSDK getDepartmentsOnCompletion:^(NSArray<Department *> * _Nonnull departments, NSError * _Nonnull error) {
+        if (error) {
+            NSDictionary *errorObject = @{
+                @"errorCode" : @(error.code),
+                @"errorMsg" : error.localizedDescription
+            };
+            errorCallback(@[errorObject]);
+        } else {
+            NSMutableArray *departmentArray = [NSMutableArray array];
+            for (Department *department in departments) {
+                NSDictionary *dict = @{
+                    @"photoURL": department.photoURL ?: @"",
+                    @"description": department.deptDescription ?: @"",
+                    @"name": department.name,
+                    @"id": department.id,
+                    @"nameInCustomerPortal": department.nameInCustomerPortal,
+                    @"layoutCount": @(department.layoutCount)
+                };
+                [departmentArray addObject:dict];
+            }
+            
+            successCallback(@[departmentArray]);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(getLayouts:(NSDictionary *)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+    [ZohoDeskPortalSDKTicket getLayouts:params onCompletion:^(NSArray<FormLayout *> * _Nullable layouts, NSError * _Nullable error) {
+        if (error) {
+            NSDictionary *errorObject = @{
+                @"errorCode" : @(error.code),
+                @"errorMsg" : error.localizedDescription
+            };
+            errorCallback(@[errorObject]);
+        } else {
+            NSMutableArray *layoutArray = [NSMutableArray array];
+            for (FormLayout *layout in layouts) {
+                NSDictionary *dict = @{
+                    @"departmentId": layout.departmentID,
+                    @"hasLogo": @(layout.hasLogo),
+                    @"id": layout.id,
+                    @"isDefaultLayout": @(layout.isDefaultLayout),
+                    @"isStandardLayout": @(layout.isStandardLayout),
+                    @"layoutDesc": layout.layoutDesc,
+                    @"layoutName": layout.layoutName,
+                    @"module": layout.module,
+                    @"photoURL": [NSNull null]
+                };
+                [layoutArray addObject:dict];
+            }
+            successCallback(@[layoutArray]);
+        }
+    }];
+    
+}
+
 @end

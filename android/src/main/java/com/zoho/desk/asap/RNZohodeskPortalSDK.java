@@ -7,18 +7,31 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.graphics.Color;
-
+import java.io.*; 
+import com.zoho.desk.asap.Converter;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.WritableArray;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.Arguments;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zoho.desk.asap.api.ZDPortalCallback;
 import com.zoho.desk.asap.api.ZDPortalException;
 import com.zoho.desk.asap.api.ZohoDeskPortalSDK;
 import com.zoho.desk.asap.common.ZDPortalConfiguration;
+import com.zoho.desk.asap.api.ZDPortalAPI;
 import com.zoho.desk.asap.common.utils.ZDPTheme;
 import com.zoho.desk.asap.common.utils.ZDPThemeType;
+import com.zoho.desk.asap.api.response.Layouts;
+import com.zoho.desk.asap.api.response.Layout;
 import com.zoho.desk.asap.api.util.ZohoDeskAPIImpl;
+import com.zoho.desk.asap.api.response.DepartmentsList;
+import com.zoho.desk.asap.api.response.Department;
+ 
 
 import java.util.HashMap;
 import java.util.Map;
@@ -293,6 +306,68 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     @ReactMethod
     public void disableLogs() {
         ZohoDeskPortalSDK.Logger.disableLogs();
+    }
+
+    @ReactMethod
+    public void getLayouts(final ReadableMap params,final Callback successCallback,final Callback errorCallback) {
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run(){
+                ZDPortalCallback.LayoutsCallback layoutsCallback = new ZDPortalCallback.LayoutsCallback() {
+                    @Override
+                    public void onLayoutsDownloaded(Layouts layoutsList) {
+                        WritableArray layoutsArray = Arguments.createArray();
+                        for(Layout layout:layoutsList.getData()) {
+                        Gson gson = new Gson();
+                        String jsonString = gson.toJson(layout);
+                        layoutsArray.pushMap(Converter.toWritableMap(jsonString));   
+                        }
+                        successCallback.invoke(layoutsArray);
+                    }
+                    @Override
+                    public void onException(ZDPortalException exception) {
+                        WritableMap errorMap = Arguments.createMap(); 
+                        errorMap.putInt("errorCode",exception.getErrorCode());
+                        errorMap.putString("errorMsg",exception.getErrorMsg());
+                        errorCallback.invoke(errorMap);
+                    }
+                };
+            ZDPortalAPI.getLayouts(layoutsCallback,Converter.convertReadableMapToHashMap(params));
+            }
+        });  
+    }
+
+    @ReactMethod
+    public void getDepartments(final Callback successCallback,final Callback errorCallback) {
+         Handler handler = new Handler();
+         handler.post(new Runnable(){
+           @Override
+            public void run(){
+               ZDPortalCallback.DepartmensCallback departmentsCallback = new ZDPortalCallback.DepartmensCallback() {
+                @Override
+                public void onDepartmentsDownloaded(DepartmentsList departmentsList) {
+                    WritableArray departmentsArray = Arguments.createArray();
+                    for(Department department:departmentsList.getData()){
+                      WritableMap departmentMap = Arguments.createMap(); 
+                      Gson gson = new Gson();
+                      String jsonString = gson.toJson(department);
+                      departmentsArray.pushMap(Converter.toWritableMap(jsonString));
+                    }
+                    successCallback.invoke(departmentsArray);
+
+                }
+                @Override
+                public void onException(ZDPortalException exception) {
+                    WritableMap errorMap = Arguments.createMap(); 
+                    errorMap.putInt("errorCode",exception.getErrorCode());
+                    errorMap.putString("errorMsg",exception.getErrorMsg());
+                    errorCallback.invoke(errorMap);
+                }
+            };
+             ZDPortalAPI.getDepartments(departmentsCallback,null);
+            }  
+         });
     }
 
     private void handleLogin(Context context, String token, final Callback successCallback, final Callback errorCallback, boolean isJWTToken) {

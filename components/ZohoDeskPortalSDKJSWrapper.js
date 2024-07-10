@@ -1,5 +1,7 @@
 const {NativeModules} = require('react-native');
 const {RNZohoDeskPortalSDK} = NativeModules;
+
+
 module.exports = {
 
     initialise: function(orgId, appId, dc) {
@@ -40,5 +42,14 @@ module.exports = {
 
     clearDeskPortalData: function() {
       RNZohoDeskPortalSDK.clearDeskPortalData();
-    }
+    },
+
+    getDepartments: function(successCallback,errorCallback) {
+      RNZohoDeskPortalSDK.getDepartments(successCallback,errorCallback);
+    },
+
+    getLayouts: function(params,successCallback,errorCallback) {
+      RNZohoDeskPortalSDK.getLayouts(params,successCallback,errorCallback);
+  }
+
 }
