@@ -30,6 +30,6 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation 'com.zoho.desk:asapsdk:3.0_BETA_22'
+    implementation 'com.zoho.desk:asapsdk:4.0_BETA_01'
     implementation 'com.google.code.gson:gson:2.11.0'
 }
