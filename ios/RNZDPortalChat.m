@@ -7,7 +7,7 @@
 //
 
 #import "RNZDPortalChat.h"
-@import ZohoDeskPortalChat;
+@import ZohoDeskPortalSalesIQ;
 
 @implementation RNZDPortalChat
 
@@ -18,11 +18,11 @@
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(show){
-    [ZDPortalChat show];
+    [ZDPortalSalesIQ show];
 }
 
 RCT_EXPORT_METHOD(setGuestUserDetails:(NSString *)email name:(NSString *)name phone:(NSString *)phone){
-    [ZDPortalChat setGuestUserWithEmail:email displayName:name phoneNumber:phone];
+    [ZDPortalSalesIQ setGuestUserWithEmail:email displayName:name phoneNumber:phone];
 }
 
 @end

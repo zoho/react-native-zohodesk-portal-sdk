@@ -62,19 +62,6 @@ RCT_EXPORT_METHOD(initialise:(NSString *)orgId appId:(NSString *)appId dc:(NSStr
     [ZohoDeskPortalSDK initializeWithOrgID:orgId appID:appId dataCenter:dataCenter];
 }
 
-RCT_EXPORT_METHOD(setUserToken:(NSString *)userToken
-                  successCallback:(RCTResponseSenderBlock)successCallback
-                  errorCallback:(RCTResponseSenderBlock)errorCallback)
-{
-    [ZohoDeskPortalSDK loginWithUserToken:userToken onCompletion:^(BOOL isSuccess) {
-        if (isSuccess){
-            successCallback(@[[NSString stringWithFormat:@"User set Success"], @"User set Success"]);
-        }else{
-            errorCallback(@[[NSString stringWithFormat:@"User set Failure"], @"User set Failure"]);
-        }
-    }];
-}
-
 RCT_EXPORT_METHOD(setJWTToken:(NSString *)jwtToken
                   successCallback:(RCTResponseSenderBlock)successCallback
                   errorCallback:(RCTResponseSenderBlock)errorCallback){
