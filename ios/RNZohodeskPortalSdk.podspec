@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RNZohodeskPortalSdk"
-  s.version      = "3.0.16"
+  s.version      = "4.0.0-beta.2"
   s.summary      = "RNZohodeskPortalSdk"
   s.description  = <<-DESC
                   RNZohodeskPortalSdk
