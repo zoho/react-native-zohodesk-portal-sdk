@@ -174,11 +174,9 @@ RCT_EXPORT_METHOD(getLayouts:(NSDictionary *)params successCallback:(RCTResponse
     
 }
 
-RCT_EXPORT_METHOD(getTicketForm:(NSDictionary *)arguments
-                  successCallback:(RCTResponseSenderBlock)successCallback
-                  errorCallback:(RCTResponseSenderBlock)errorCallback) {
+RCT_EXPORT_METHOD(getTicketForm:(NSDictionary *)params flags:(NSString *)flags successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
 
-    [ZohoDeskPortalSDKTicket getForm:arguments headers:nil onCompletion:^(TicketForm * _Nullable ticketForm, NSError * _Nullable error) {
+    [ZohoDeskPortalSDKTicket getForm:params headers:nil onCompletion:^(TicketForm * _Nullable ticketForm, NSError * _Nullable error) {
         if (error) {
             errorCallback(@[@{@"error": error.localizedDescription}]);
             return;
@@ -194,11 +192,9 @@ RCT_EXPORT_METHOD(getTicketForm:(NSDictionary *)arguments
     }];
 }
 
-RCT_EXPORT_METHOD(getTicketFields:(NSDictionary *)arguments
-                  successCallback:(RCTResponseSenderBlock)successCallback
-                  errorCallback:(RCTResponseSenderBlock)errorCallback) {
+RCT_EXPORT_METHOD(getTicketFields:(NSDictionary *)params flags:(NSString *)flags successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
 
-    [ZohoDeskPortalSDKTicket getFields:arguments onCompletion:^(NSArray<ZDTicketField *> * _Nullable ticketFields, NSError * _Nullable error) {
+    [ZohoDeskPortalSDKTicket getFields:params onCompletion:^(NSArray<ZDTicketField *> * _Nullable ticketFields, NSError * _Nullable error) {
         if (error) {
             errorCallback(@[@{@"error": error.localizedDescription}]);
             return;
