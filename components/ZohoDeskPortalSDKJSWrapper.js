@@ -48,12 +48,12 @@ module.exports = {
       RNZohoDeskPortalSDK.getLayouts(params,successCallback,errorCallback);
     },
 
-    getTicketForm: function(params,flags,successCallback,errorCallback) {
-      RNZohoDeskPortalSDK.getTicketForm(params,flags,successCallback,errorCallback);
+    getTicketForm: function(params,featureFlags,successCallback,errorCallback) {
+      RNZohoDeskPortalSDK.getTicketForm(params,featureFlags,successCallback,errorCallback);
     },
     
-    getTicketFields: function(params, flags, successCallback, errorCallback) {
-      RNZohoDeskPortalSDK.getTicketFields(params, flags, successCallback, errorCallback);
+    getTicketFields: function(params, featureFlags, successCallback, errorCallback) {
+      RNZohoDeskPortalSDK.getTicketFields(params, featureFlags, successCallback, errorCallback);
     }
 
 }

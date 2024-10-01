@@ -174,8 +174,8 @@ RCT_EXPORT_METHOD(getLayouts:(NSDictionary *)params successCallback:(RCTResponse
     
 }
 
-RCT_EXPORT_METHOD(getTicketForm:(NSDictionary *)params flags:(NSString *)flags successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
-
+RCT_EXPORT_METHOD(getTicketForm:(NSDictionary *)params featureFlags:(NSString *)flags successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+    // Android handled feature flags value in this API. iOS need to handle this
     [ZohoDeskPortalSDKTicket getForm:params headers:nil onCompletion:^(TicketForm * _Nullable ticketForm, NSError * _Nullable error) {
         if (error) {
             errorCallback(@[@{@"error": error.localizedDescription}]);
@@ -192,8 +192,8 @@ RCT_EXPORT_METHOD(getTicketForm:(NSDictionary *)params flags:(NSString *)flags s
     }];
 }
 
-RCT_EXPORT_METHOD(getTicketFields:(NSDictionary *)params flags:(NSString *)flags successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
-
+RCT_EXPORT_METHOD(getTicketFields:(NSDictionary *)params featureFlags:(NSString *)flags successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+     // Android handle feature flags value in this API. iOS need to handle this
     [ZohoDeskPortalSDKTicket getFields:params onCompletion:^(NSArray<ZDTicketField *> * _Nullable ticketFields, NSError * _Nullable error) {
         if (error) {
             errorCallback(@[@{@"error": error.localizedDescription}]);
