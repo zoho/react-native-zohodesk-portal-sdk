@@ -174,4 +174,115 @@ RCT_EXPORT_METHOD(getLayouts:(NSDictionary *)params successCallback:(RCTResponse
     
 }
 
+RCT_EXPORT_METHOD(getTicketForm:(NSDictionary *)params featureFlags:(NSString *)flags successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+    // Android handled feature flags value in this API. iOS need to handle this
+    [ZohoDeskPortalSDKTicket getForm:params headers:nil onCompletion:^(TicketForm * _Nullable ticketForm, NSError * _Nullable error) {
+        if (error) {
+            errorCallback(@[@{@"error": error.localizedDescription}]);
+            return;
+        }
+
+        if (ticketForm) {
+            // Convert the TicketForm object to NSDictionary
+            NSDictionary *formDict =  [RNZohoDeskPortalSDK dictionaryFromTicketForm:ticketForm];
+            successCallback(@[formDict]);
+        } else {
+            errorCallback(@[@{@"error": @"No ticket form available"}]);
+        }
+    }];
+}
+
+RCT_EXPORT_METHOD(getTicketFields:(NSDictionary *)params featureFlags:(NSString *)flags successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback) {
+     // Android handle feature flags value in this API. iOS need to handle this
+    [ZohoDeskPortalSDKTicket getFields:params onCompletion:^(NSArray<ZDTicketField *> * _Nullable ticketFields, NSError * _Nullable error) {
+        if (error) {
+            errorCallback(@[@{@"error": error.localizedDescription}]);
+            return;
+        }
+
+        if (ticketFields) {
+            NSArray *fieldsDictArray = [RNZohoDeskPortalSDK dictionaryFromTicketFieldArray:ticketFields];
+            NSDictionary *fieldData = @{@"data": fieldsDictArray};
+            successCallback(@[fieldData]);
+        } else {
+            errorCallback(@[@{@"error": @"No ticket fields available"}]);
+        }
+    }];
+}
+
+// Convert TicketForm to NSDictionary
++ (NSDictionary *)dictionaryFromTicketForm:(TicketForm *)ticketForm {
+    NSMutableArray *sectionsArray = [NSMutableArray array];
+    
+    for (FormSection *section in ticketForm.sections) {
+        NSDictionary *sectionDict = @{
+            @"sectionName": section.sectionName,
+            @"fields": [self dictionaryFromTicketFieldArray:section.fields]
+        };
+        [sectionsArray addObject:sectionDict];
+    }
+    
+    NSDictionary *sections = @{@"sections": sectionsArray};
+    
+    return @{@"form": sections};
+}
+
+// Convert TicketField array to NSDictionary
++ (NSArray<NSDictionary *> *)dictionaryFromTicketFieldArray:(NSArray<ZDTicketField *> *)fields {
+    NSMutableArray *fieldsArray = [NSMutableArray array];
+    
+    for (ZDTicketField *field in fields) {
+        NSDictionary *fieldDict = @{
+            @"displayLabel": field.displayLabel ?: [NSNull null],
+            @"i18NLabel": field.i18NLabel ?: [NSNull null],
+            @"apiName": field.apiName ?: [NSNull null],
+            @"id": field.id ?: [NSNull null],
+            @"name": field.name ?: [NSNull null],
+            @"type": field.type,
+            @"isMandatory": @(field.isMandatory),
+            @"allowedValues": field.allowedValues ?: [NSNull null],
+            @"dependency": field.dependency ?: [NSNull null],
+            @"defaultValue": field.defaultValue ?: [NSNull null],
+            @"toolTip": field.toolTip ?: [NSNull null],
+            @"toolTipType": field.toolTipType ?: [NSNull null],
+            @"sortBy": field.sortBy ?: [NSNull null],
+            @"statusMapping": [self dictionaryFromStatusMapping:field.statusMapping] ?: [NSNull null],
+            @"restoreOnReplyValues": field.restoreOnReplyValues ?: [NSNull null],
+            @"roundingOption": field.roundingOption ?: [NSNull null],
+            @"fieldName": field.fieldName ?: [NSNull null],
+            @"uploadAttachment": field.uploadAttachment ?: [NSNull null],
+            @"captchaURL": field.captchaURL ?: [NSNull null],
+            @"isPHI": @(field.isPHI),
+            @"isEncryptedField": @(field.isEncryptedField),
+            @"isNested": @(field.isNested),
+            @"isVisible": @(field.isVisible),
+            @"maxLength": @(field.maxLength),
+            @"precison": @(field.precison),
+            @"decimals": @(field.decimals),
+            @"isReadOnly": @(field.isReadOnly),
+            @"isCustomField": @(field.isCustomField)
+        };
+        [fieldsArray addObject:fieldDict];
+    }
+    
+    return fieldsArray;
+}
+
+// Convert StatusMap array to NSDictionary
++ (NSArray<NSDictionary *> *)dictionaryFromStatusMapping:(NSArray<StatusMap *> *)statusMapping {
+    NSMutableArray *statusArray = [NSMutableArray array];
+    
+    for (StatusMap *status in statusMapping) {
+        NSDictionary *statusDict = @{
+            @"mappingValue": status.mappingValue ?: [NSNull null],
+            @"name": status.name ?: [NSNull null]
+        };
+        [statusArray addObject:statusDict];
+    }
+    
+    return statusArray;
+}
+
+
+
 @end
