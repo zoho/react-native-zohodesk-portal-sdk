@@ -26,11 +26,17 @@ import com.zoho.desk.asap.common.ZDPortalConfiguration;
 import com.zoho.desk.asap.api.ZDPortalAPI;
 import com.zoho.desk.asap.common.utils.ZDPTheme;
 import com.zoho.desk.asap.common.utils.ZDPThemeType;
+import com.zoho.desk.asap.api.response.TicketForm;
 import com.zoho.desk.asap.api.response.Layouts;
 import com.zoho.desk.asap.api.response.Layout;
 import com.zoho.desk.asap.api.util.ZohoDeskAPIImpl;
 import com.zoho.desk.asap.api.response.DepartmentsList;
 import com.zoho.desk.asap.api.response.Department;
+import com.zoho.desk.asap.api.ZDPortalCallback.TicketFormCallback;
+import com.zoho.desk.asap.api.response.TicketFieldsList;
+import com.zoho.desk.asap.api.ZDPortalCallback.TicketFieldsCallback;
+import com.zoho.desk.asap.api.response.TicketFieldsList;
+import com.zoho.desk.asap.api.ZDPortalTicketsAPI;
  
 
 import java.util.HashMap;
@@ -401,5 +407,57 @@ public class RNZohodeskPortalSDK extends ReactContextBaseJavaModule {
     public void clearDeskPortalData() {
         ZohoDeskPortalSDK deskPortalSDK = ZohoDeskPortalSDK.getInstance(getCurrentActivity().getApplicationContext());
         deskPortalSDK.clearDeskPortalData();
+    }
+
+    @ReactMethod
+    public void getTicketForm(final ReadableMap params,String flags,final Callback successCallback, final Callback errorCallback){
+         Handler handler = new Handler();
+         handler.post(new Runnable(){
+            @Override
+            public void run(){
+              ZDPortalCallback.TicketFormCallback ticketFormCallback = new ZDPortalCallback.TicketFormCallback() {
+                @Override
+                public void onTicketFormDownloaded(TicketForm ticketForm) {
+                  Gson gson = new Gson();
+                  String jsonString = gson.toJson(ticketForm);
+                  successCallback.invoke(Converter.toWritableMap(jsonString));
+                }
+                @Override
+                public void onException(ZDPortalException exception) {
+                    WritableMap errorMap = Arguments.createMap(); 
+                    errorMap.putInt("errorCode",exception.getErrorCode());
+                    errorMap.putString("errorMsg",exception.getErrorMsg());
+                    errorCallback.invoke(errorMap);
+                }
+            };
+            ZDPortalTicketsAPI.getTicketForm(ticketFormCallback,Converter.convertReadableMapToHashMap(params),flags);
+              }
+         });
+    }
+
+    @ReactMethod
+    public void getTicketFields(final ReadableMap params,String flags,final Callback successCallback, final Callback errorCallback){
+         Handler handler = new Handler();
+         handler.post(new Runnable(){
+            @Override
+            public void run(){
+              ZDPortalCallback.TicketFieldsCallback  ticketFieldsCallback = new ZDPortalCallback.TicketFieldsCallback() {
+                @Override
+                public void onTicketFieldsDownloaded(TicketFieldsList ticketFieldsList ) {
+                  Gson gson = new Gson();
+                  String jsonString = gson.toJson(ticketFieldsList);
+                  successCallback.invoke(Converter.toWritableMap(jsonString));
+                }
+                @Override
+                public void onException(ZDPortalException exception) {
+                    WritableMap errorMap = Arguments.createMap(); 
+                    errorMap.putInt("errorCode",exception.getErrorCode());
+                    errorMap.putString("errorMsg",exception.getErrorMsg());
+                    errorCallback.invoke(errorMap);
+                }
+            };
+            ZDPortalTicketsAPI.getTicketFields(ticketFieldsCallback,Converter.convertReadableMapToHashMap(params),flags);
+              }
+         });
     }
 }
