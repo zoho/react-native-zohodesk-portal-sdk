@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.source_files =  "ios/RNZohoDeskPortalKB/*.{h,m}"
 
   s.dependency "React"
-  s.dependency "ZohoDeskPortalKB", '4.0.0-beta.4'
+  s.dependency "ZohoDeskPortalKB", '4.0.0'
 end

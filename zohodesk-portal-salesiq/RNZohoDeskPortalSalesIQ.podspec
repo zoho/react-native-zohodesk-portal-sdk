@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency "React"
-  s.dependency 'ZohoDeskPortalSalesIQ', '4.0.0-beta.4' 
+  s.dependency 'ZohoDeskPortalSalesIQ', '4.0.0' 
 
 end

@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.source_files = "ios/RNZohoDeskPortalLiveChat/*.{h,m,mm}"
 
   s.dependency "React"
-  s.dependency 'ZohoDeskPortalChatKit', '4.0.0-beta.4'
+  s.dependency 'ZohoDeskPortalChatKit', '4.0.0'
 end
