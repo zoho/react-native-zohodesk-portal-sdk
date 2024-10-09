@@ -77,9 +77,9 @@ RCT_EXPORT_METHOD(setConfiguration:(NSDictionary *)configDictionary) {
     configuration.disableAddTopic = [configDictionary[@"disableAddTopic"] boolValue];
     configuration.disableMyTicket = [configDictionary[@"disableMyTicket"] boolValue];
     configuration.disableSubmitTicket = [configDictionary[@"disableSubmitTicket"] boolValue];
-    configuration.disableLiveChat = [configDictionary[@"disableGuidedConversation"] boolValue];
-    configuration.disableKBBot = [configDictionary[@"disableAnswerBot"] boolValue];
-    configuration.disableBMChat = [configDictionary[@"disableBusinessMessanger"] boolValue];
+    configuration.disableGC = [configDictionary[@"disableGuidedConversation"] boolValue];
+    configuration.disableAnswerBot = [configDictionary[@"disableAnswerBot"] boolValue];
+    configuration.disableBM = [configDictionary[@"disableBusinessMessanger"] boolValue];
     configuration.disableChat = [configDictionary[@"disableSalesIQ"] boolValue];
     configuration.enableModuleBasedSearch = [configDictionary[@"enableModuleBasedSearch"] boolValue];
 
