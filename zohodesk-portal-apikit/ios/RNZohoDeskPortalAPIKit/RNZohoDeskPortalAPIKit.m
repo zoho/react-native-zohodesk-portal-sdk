@@ -11,7 +11,7 @@
 
 @implementation RNZohoDeskPortalSDK
 
-+ (void)setDeviceIDForZDPortal: (NSString *) deviceID{
++ (void)setDeviceIDForNotification: (NSString *) deviceID{
     [[NSUserDefaults standardUserDefaults] setObject:deviceID forKey:@"ZDPAPNSDeviceID"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -45,7 +45,7 @@ RCT_EXPORT_METHOD(initialise:(NSString *)orgId appId:(NSString *)appId dc:(NSStr
 }
 
 
-RCT_EXPORT_METHOD(setJWTToken:(NSString *)jwtToken
+RCT_EXPORT_METHOD(loginWithJWTToken:(NSString *)jwtToken
                   successCallback:(RCTResponseSenderBlock)successCallback
                   errorCallback:(RCTResponseSenderBlock)errorCallback){
     [ZohoDeskPortalSDK loginWithJWTToken:jwtToken onCompletion:^(BOOL isSuccess) {
@@ -95,7 +95,7 @@ RCT_EXPORT_METHOD(enableLogs){
 RCT_EXPORT_METHOD(disableLogs){
 }
 
-RCT_EXPORT_METHOD(clearDeskPortalData) {
+RCT_EXPORT_METHOD(clearData) {
     [ZohoDeskPortalSDK clearAllLocalData];
 }
 

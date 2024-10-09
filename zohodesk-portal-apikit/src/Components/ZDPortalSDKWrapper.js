@@ -31,12 +31,12 @@ const ZDPortalSDKWrapper = {
         RNZohoDeskPortalSDK.disableLogs();
     },
 
-    setJWTToken: function(jwtToken, successCallback, errorCallback) {
-        RNZohoDeskPortalSDK.setJWTToken(jwtToken, successCallback, errorCallback);
+    loginWithJWTToken: function(jwtToken, successCallback, errorCallback) {
+        RNZohoDeskPortalSDK.loginWithJWTToken(jwtToken, successCallback, errorCallback);
     },
 
-    clearDeskPortalData: function() {
-        RNZohoDeskPortalSDK.clearDeskPortalData();
+    clearData: function() {
+        RNZohoDeskPortalSDK.clearData();
     },
 
     getDepartments: function(successCallback,errorCallback) {

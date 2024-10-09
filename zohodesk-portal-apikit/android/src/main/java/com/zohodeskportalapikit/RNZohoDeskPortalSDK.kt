@@ -86,7 +86,7 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
     }
 
     @ReactMethod
-    fun setJWTToken(userToken: String, successCallback: Callback, errorCallback: Callback) {
+    fun loginWithJWTToken(userToken: String, successCallback: Callback, errorCallback: Callback) {
         getCurrentActivity()?.let {
             handleLogin(it.applicationContext, userToken, successCallback, errorCallback, true)
         }
@@ -220,7 +220,7 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
     }
 
     @ReactMethod
-    fun clearDeskPortalData() {
+    fun clearData() {
         val deskPortalSDK = ZohoDeskPortalSDK.getInstance(getCurrentActivity()!!.applicationContext)
         deskPortalSDK.clearDeskPortalData()
     }
