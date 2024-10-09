@@ -7,7 +7,7 @@ module.exports = {
       RNZohoDeskPortalHome.show();
     },
 
-    updateConfiguration: function(ZDPHomeConfiguration = {}){
+    setConfiguration: function(ZDPHomeConfiguration = {}){
       const config = {
         enableCommunity: ZDPHomeConfiguration?.enableCommunity ?? true,
         enableHelpCenter: ZDPHomeConfiguration?.enableHelpCenter ?? true,

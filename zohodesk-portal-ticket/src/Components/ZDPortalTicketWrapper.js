@@ -6,7 +6,7 @@ module.exports = {
     RNZohoDeskPortalTickets.show();
   },
 
-  updateConfiguration: function(ZDPTicketConfiguration = {}){
+  setConfiguration: function(ZDPTicketConfiguration = {}){
     const config = {
       isReplyAllowed: ZDPTicketConfiguration?.isReplyAllowed ?? true,
       isCommentAllowed: ZDPTicketConfiguration?.isCommentAllowed ?? true,
