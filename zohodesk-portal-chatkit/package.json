@@ -18,6 +18,6 @@
     "Desk"
   ],
   "peerDependencies": {
-    "zohodesk-portal-apikit": "3.0.0-beta.1"
+    "zohodesk-portal-configuration": "3.0.0-beta.1"
   }
 }
