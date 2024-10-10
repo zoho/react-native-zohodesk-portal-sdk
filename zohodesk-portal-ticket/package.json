@@ -1,5 +1,5 @@
 {
-  "name": "zohodesk-portal-ticket",
+  "name": "@zohocorp/zohodesk-portal-ticket",
   "version": "3.0.0-beta.1",
   "description": "ZohoDeskPortalTicket",
   "source": "index.js",
@@ -18,6 +18,6 @@
     "Desk"
   ],
   "peerDependencies": {
-    "zohodesk-portal-configuration": "3.0.0-beta.1"
+    "@zohocorp/zohodesk-portal-configuration": "3.0.0-beta.1"
   }
 }
