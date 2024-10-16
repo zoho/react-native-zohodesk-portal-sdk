@@ -39,6 +39,10 @@ RCT_EXPORT_METHOD(initialise:(NSString *)orgId appId:(NSString *)appId dc:(NSStr
         dataCenter = ZDPDataCenterAU;
     }else if ([dc isEqualToString:@"JP"]){
         dataCenter = ZDPDataCenterJP;
+    }else if ([dc isEqualToString:@"CA"]){
+        dataCenter = ZDPDataCenterCA;
+    }else if ([dc isEqualToString:@"SA"]){
+        dataCenter = ZDPDataCenterSA;
     }
  
     [ZohoDeskPortalSDK initializeWithOrgID:orgId appID:appId dataCenter:dataCenter];
