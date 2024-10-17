@@ -14,6 +14,6 @@
 
 @interface RNZohoDeskPortalSDK : NSObject <RCTBridgeModule>
 
-    + (void)setDeviceIDForZDPortal: (NSString *) deviceID;
+    + (void)setDeviceIDForNotification: (NSString *) deviceID;
 
 @end
