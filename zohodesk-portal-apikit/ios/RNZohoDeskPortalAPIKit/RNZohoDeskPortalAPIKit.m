@@ -26,19 +26,24 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(initialise:(NSString *)orgId appId:(NSString *)appId dc:(NSString *)dc){
     ZDPDataCenter dataCenter = ZDPDataCenterUS;
-
-    if ([dc isEqualToString:@"US"]){
+    NSString *dcUpperCase = [dc uppercaseString];
+    
+    if ([dcUpperCase isEqualToString:@"US"]){
         dataCenter = ZDPDataCenterUS;
-    }else if ([dc isEqualToString:@"IN"]){
+    }else if ([dcUpperCase isEqualToString:@"IN"]){
         dataCenter = ZDPDataCenterIN;
-    }else if ([dc isEqualToString:@"CN"]){
+    }else if ([dcUpperCase isEqualToString:@"CN"]){
         dataCenter = ZDPDataCenterCN;
-    }else if ([dc isEqualToString:@"EU"]){
+    }else if ([dcUpperCase isEqualToString:@"EU"]){
         dataCenter = ZDPDataCenterEU;
-    }else if ([dc isEqualToString:@"AU"]){
+    }else if ([dcUpperCase isEqualToString:@"AU"]){
         dataCenter = ZDPDataCenterAU;
-    }else if ([dc isEqualToString:@"JP"]){
+    }else if ([dcUpperCase isEqualToString:@"JP"]){
         dataCenter = ZDPDataCenterJP;
+    }else if ([dcUpperCase isEqualToString:@"CA"]){
+        dataCenter = ZDPDataCenterCA;
+    }else if ([dcUpperCase isEqualToString:@"SA"]){
+        dataCenter = ZDPDataCenterSA;
     }
  
     [ZohoDeskPortalSDK initializeWithOrgID:orgId appID:appId dataCenter:dataCenter];
