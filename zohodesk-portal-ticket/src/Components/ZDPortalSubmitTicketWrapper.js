@@ -1,5 +1,5 @@
 const {NativeModules} = require('react-native');
-const { ZDPTicket } = require('../../../zohodesk-portal-apikit/src/Modals/ZDPTicket');
+const { ZDPTicket } = require('../../../zohodesk-portal-apikit/src/Models/ZDPTicket');
 const {RNZohoDeskPortalSubmitTicket} = NativeModules;
 
 class ZDCustomizedTicketField {

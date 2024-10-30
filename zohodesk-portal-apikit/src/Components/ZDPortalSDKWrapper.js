@@ -1,13 +1,13 @@
 const {NativeModules} = require('react-native');
 const {RNZohoDeskPortalSDK} = NativeModules;
-import {Department} from "../Modals/Department";
-import { FormLayout} from "../Modals/FormLayout";
-import { ZDPProduct } from "../Modals/ZDPProduct";
-import { ZDPProfile } from "../Modals/ZDPProfile";
-import { ZDPAttachment } from "../Modals/ZDPTopic";
-import { TicketField } from "../Modals/TIcketField";
-import { TicketForm } from "../Modals/TicketForm";
-import { ZDPTopic } from "../Modals/ZDPTopic";
+import {Department} from "../Models/Department";
+import { FormLayout} from "../Models/FormLayout";
+import { ZDPProduct } from "../Models/ZDPProduct";
+import { ZDPProfile } from "../Models/ZDPProfile";
+import { ZDPAttachment } from "../Models/ZDPTopic";
+import { TicketField } from "../Models/TIcketField";
+import { TicketForm } from "../Models/TicketForm";
+import { ZDPTopic } from "../Models/ZDPTopic";
 
 const ZDPortalSDKWrapper = {
 
