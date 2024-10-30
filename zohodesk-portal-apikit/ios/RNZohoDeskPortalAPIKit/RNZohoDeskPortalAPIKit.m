@@ -26,6 +26,6 @@ RCT_EXTERN_METHOD(addAttachments:(NSString *)fileName fileData:(NSString *)byteS
 RCT_EXTERN_METHOD(updateUserInformation:(NSDictionary *)userInfo successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
 RCT_EXTERN_METHOD(getTicketFields:(NSDictionary *)params featureFlags:(NSString *)flags  successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
 RCT_EXTERN_METHOD(getTicketForm:(NSDictionary *)params featureFlags:(NSString *)flags  successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
-RCT_EXTERN_METHOD(addTicket:(NSDictionary *)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
-RCT_EXTERN_METHOD(addTicketAsGuest:(NSDictionary *)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
+RCT_EXTERN_METHOD(createTicket:(NSDictionary *)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
+RCT_EXTERN_METHOD(createGuestTicket:(NSDictionary *)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
 @end
