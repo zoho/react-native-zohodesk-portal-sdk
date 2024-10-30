@@ -78,30 +78,9 @@ class RNZohoDeskPortalSubmitTicketModule(reactContext: ReactApplicationContext) 
     Handler(Looper.getMainLooper()).post {
       val createTicketCallback = object : ZDPortalCallback.CreateTicketCallback {
         override fun onTicketCreated(ticket: Ticket) {
-          try {
-            val productsArray = Arguments.createArray()
-            val ticketClass: Class<*> = ticket::class.java
-            val fields: Array<Field> = ticketClass.declaredFields
-
-            for (field in fields) {
-              field.isAccessible = true 
-              val fieldName = field.name 
-              val fieldValue = field.get(ticket) 
-
-              if (fieldValue != null) {
-                productsArray.pushString("$fieldName: $fieldValue")
-              } else {
-                productsArray.pushString("$fieldName: null")
-              }
-            }
-
-            successCallback.invoke(productsArray)
-          } catch (e: Exception) {
-            val errorMap = Arguments.createMap()
-            errorMap.putInt("errorCode", 500) 
-            errorMap.putString("errorMsg", e.message)
-            errorCallback.invoke(errorMap)
-          }
+          val gson = Gson()
+          val jsonString = gson.toJson(ticket)
+          successCallback.invoke(jsonString)
         }
 
         override fun onException(exception: ZDPortalException) {
