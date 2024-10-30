@@ -35,6 +35,11 @@ class RNZDPortalCommunityModule(reactContext: ReactApplicationContext) :
     ZDPortalCommunity.setConfiguration(configuration)
   }
 
+  @ReactMethod
+  fun showTopic(permalink: String){
+    ZDPortalCommunity.showTopicWithPermaLink(currentActivity,permalink)
+  }
+  
   companion object {
     const val NAME = "RNZohoDeskPortalCommunity"
   }
