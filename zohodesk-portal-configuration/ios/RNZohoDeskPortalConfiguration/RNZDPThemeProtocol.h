@@ -1,7 +1,6 @@
 #import <UIKit/UIKit.h>
 
 @protocol RNZDPThemeProtocol <NSObject>
-@optional
 @property (nonatomic, readonly, strong) UIColor * _Nonnull themeColor;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull primaryBackgroundColor;
 @property (nonatomic, readonly, strong) UIColor * _Nonnull secondaryBackgroundColor;
