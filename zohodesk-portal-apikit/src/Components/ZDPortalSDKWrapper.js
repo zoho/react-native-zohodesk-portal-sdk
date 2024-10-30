@@ -8,6 +8,7 @@ import { ZDPAttachment } from "../Models/ZDPTopic";
 import { TicketField } from "../Models/TIcketField";
 import { TicketForm } from "../Models/TicketForm";
 import { ZDPTopic } from "../Models/ZDPTopic";
+import { ZDPTicket } from "../Models/ZDPTicket";
 
 const ZDPortalSDKWrapper = {
 

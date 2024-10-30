@@ -1,5 +1,5 @@
-import { ZDPProduct } from "@zohocorp/zohodesk-portal-apikit/src/Modals/ZDPProduct";
-import { ZDPUser } from "@zohocorp/zohodesk-portal-apikit/src/Modals/ZDPTopic";
+import { ZDPProduct } from "@zohocorp/zohodesk-portal-apikit/src/Models/ZDPProduct";
+import { ZDPUser } from "@zohocorp/zohodesk-portal-apikit/src/Models/ZDPTopic";
 
 export class ZDPTicket {
     constructor(ticketNumber, modifiedTime, creator, subject, dueDate, departmentID, threadCount, channel, onholdTime, priority,
