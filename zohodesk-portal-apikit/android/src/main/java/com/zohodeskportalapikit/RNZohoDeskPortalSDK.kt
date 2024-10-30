@@ -29,7 +29,7 @@ import com.zoho.desk.asap.api.ZDPortalTicketsAPI
 import com.zoho.desk.asap.api.response.DeskUserProfile
 import com.zoho.desk.asap.api.response.TicketFieldsList
 import com.zoho.desk.asap.api.response.TicketForm
-
+import com.zoho.desk.asap.api.response.Ticket
 import java.util.HashMap
 
 class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
@@ -157,13 +157,9 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
         Handler(Looper.getMainLooper()).post {
             val layoutsCallback = object : ZDPortalCallback.LayoutsCallback {
                 override fun onLayoutsDownloaded(layoutsList: Layouts) {
-                    val layoutsArray = Arguments.createArray()
-                    for (layout in layoutsList.data) {
-                        val gson = Gson()
-                        val jsonString = gson.toJson(layout)
-                        layoutsArray.pushMap(Converter.toWritableMap(jsonString))
-                    }
-                    successCallback.invoke(layoutsArray)
+                    val gson = Gson()
+                    val jsonString = gson.toJson(layoutsList.data)
+                    successCallback.invoke(jsonString)
                 }
 
                 override fun onException(exception: ZDPortalException) {
@@ -182,13 +178,9 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
         Handler(Looper.getMainLooper()).post {
             val departmentsCallback = object : ZDPortalCallback.DepartmensCallback {
                 override fun onDepartmentsDownloaded(departmentsList: DepartmentsList) {
-                    val departmentsArray = Arguments.createArray()
-                    for (department in departmentsList.data) {
-                        val gson = Gson()
-                        val jsonString = gson.toJson(department)
-                        departmentsArray.pushMap(Converter.toWritableMap(jsonString))
-                    }
-                    successCallback.invoke(departmentsArray)
+                    val gson = Gson()
+                    val jsonString = gson.toJson(departmentsList.data)
+                    successCallback.invoke(jsonString)
                 }
 
                 override fun onException(exception: ZDPortalException) {
@@ -233,16 +225,9 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
         Handler(Looper.getMainLooper()).post {
             val mostDiscussedTopicsCallback = object : ZDPortalCallback.CommunityTopicsCallback {
                 override fun onCommunityTopicsDownloaded(topicsList: DeskTopicsList) {
-                    val topicsArray = Arguments.createArray()
-
                     val gson = Gson()
-                    for (topic in topicsList.data) {
-                        val jsonString = gson.toJson(topic)
-                        val topicMap = Converter.toWritableMap(jsonString)
-
-                        topicsArray.pushMap(topicMap)
-                    }
-                    successCallback.invoke(topicsArray)
+                    val jsonString = gson.toJson(topicsList.data)
+                    successCallback.invoke(jsonString)
                 }
 
                 override fun onException(exception: ZDPortalException) {
@@ -261,16 +246,9 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
         Handler(Looper.getMainLooper()).post {
             val mostPopularTopicsCallback = object : ZDPortalCallback.CommunityTopicsCallback {
                 override fun onCommunityTopicsDownloaded(topicsList: DeskTopicsList) {
-                    val topicsArray = Arguments.createArray()
-
                     val gson = Gson()
-                    for (topic in topicsList.data) {
-                        val jsonString = gson.toJson(topic)
-                        val topicMap = Converter.toWritableMap(jsonString)
-
-                        topicsArray.pushMap(topicMap)
-                    }
-                    successCallback.invoke(topicsArray)
+                    val jsonString = gson.toJson(topicsList.data)
+                    successCallback.invoke(jsonString)
                 }
 
                 override fun onException(exception: ZDPortalException) {
@@ -290,14 +268,9 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
         Handler(Looper.getMainLooper()).post {
             val productsCallback = object : ZDPortalCallback.ProductsCallback {
                 override fun onProductsDownloaded(productList: ProductsList) {
-                    val productsArray = Arguments.createArray()
-                    for (product in productList.data) {
-                        val gson = Gson()
-                        val jsonString = gson.toJson(product)
-                        val productMap = Converter.toWritableMap(jsonString)
-                        productsArray.pushMap(productMap)
-                    }
-                    successCallback.invoke(productsArray)
+                    val gson = Gson()
+                    val jsonString = gson.toJson(productList.data)
+                    successCallback.invoke(jsonString)
                 }
 
                 override fun onException(exception: ZDPortalException) {
@@ -328,21 +301,11 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
                 // Callback to handle the upload response
                 val attachmentCallback = object : ZDPortalCallback.UploadAttachmentCallback {
                     override fun onAttachmentUploaded(attachment: ASAPAttachmentUploadResponse) {
-                        // Prepare the response map
-                        val attachmentMap = Arguments.createMap().apply {
-                            putString("size", attachment.size)
-                            putString("creatorId", attachment.creatorId)
-                            putString("name", attachment.name)
-                            putString("createdTime", attachment.createdTime)
-                            putString("isPublic", attachment.isPublic.toString())
-                            putString("id", attachment.id)
-                        }
-                        
-                        // Success callback with attachment data
-                        successCallback.invoke(attachmentMap)
-    
+                        val gson = Gson()
+                        val jsonString = gson.toJson(attachment)
                         // Optionally, delete the temp file after uploading
                         tempFile.delete()
+                        successCallback.invoke(jsonString)
                     }
     
                     override fun attachProgress(progress: Float) {
@@ -384,30 +347,10 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
         Handler(Looper.getMainLooper()).post {
             val createTicketCallback = object : ZDPortalCallback.UserDetailsCallback {
                 override fun onUserDetailsSuccess(userProfile: DeskUserProfile) {
-                    // Convert the DeskUserProfile object to WritableMap
-                    val userMap = Arguments.createMap().apply {
-                        putString("profileName", userProfile.profileName)
-                        putString("lastName", userProfile.lastName)
-                        putString("displayName", userProfile.displayName)
-                        putString("facebook", userProfile.facebook)
-                        putString("mobile", userProfile.mobile)
-                        putString("fullName", userProfile.fullName)
-                        putString("timeZone", userProfile.timeZone)
-                        putString("emailId", userProfile.emailId)
-                        putString("language", userProfile.language)
-                        putString("countryLocale", userProfile.countryLocale)
-                        putString("firstName", userProfile.firstName)
-                        putString("photoURL", userProfile.photoURL)
-                        putString("twitter", userProfile.twitter)
-                        putString("phone", userProfile.phone)
-                        putString("joiningTime", userProfile.joiningTime)
-                        putString("roleName", userProfile.roleName)
-                        putString("id", userProfile.id)
-                    }
-
-                    // Call the success callback with the userMap
-                    successCallback.invoke(userMap)
-                }
+                    val gson = Gson()
+                    val jsonString = gson.toJson(userProfile)
+                    successCallback.invoke(jsonString)
+                }  
 
                 override fun onException(exception: ZDPortalException) {
                     val errorMap = Arguments.createMap()
@@ -433,8 +376,8 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
             val ticketFormCallback = object : ZDPortalCallback.TicketFormCallback {
                 override fun onTicketFormDownloaded(ticketForm: TicketForm) {
                     val gson = Gson()
-                    val jsonString = gson.toJson(ticketForm)
-                    successCallback.invoke(Converter.toWritableMap(jsonString))
+                    val jsonString = gson.toJson(ticketForm.form)
+                    successCallback.invoke(jsonString)
                 }
 
                 override fun onException(exception: ZDPortalException) {
@@ -455,8 +398,8 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
             val ticketFieldsCallback = object : ZDPortalCallback.TicketFieldsCallback {
                 override fun onTicketFieldsDownloaded(ticketFieldsList: TicketFieldsList) {
                     val gson = Gson()
-                    val jsonString = gson.toJson(ticketFieldsList)
-                    successCallback.invoke(Converter.toWritableMap(jsonString))
+                    val jsonString = gson.toJson(ticketFieldsList.data)
+                    successCallback.invoke(jsonString)
                 }
 
                 override fun onException(exception: ZDPortalException) {
