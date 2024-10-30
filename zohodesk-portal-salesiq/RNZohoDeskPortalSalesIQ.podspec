@@ -11,11 +11,11 @@ Pod::Spec.new do |s|
   s.authors      = { 'zohodesk-mobile' => 'desk-mobile@zohocorp.com' }
 
   s.source       = { :git => "https://github.com/zoho/react-native-zohodesk-portal-sdk.git", :tag => "#{s.version}" }
-  s.source_files = "ios/RNZohoDeskPortalChat/*.{h,m,mm}"
+  s.source_files = "ios/RNZohoDeskPortalChat/*.{h,m,mm,swift}"
   s.platform     = :ios, "13.0"
   s.requires_arc = true
 
   s.dependency "React"
-  s.dependency 'ZohoDeskPortalSalesIQ', '4.0.0' 
+  s.dependency 'ZohoDeskPortalSalesIQ', '4.0.2' 
 
 end

@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
   s.platform    = :ios, "13.0"
   s.source       = { :git => "https://github.com/zoho/react-native-zohodesk-portal-sdk.git", :tag => "#{s.version}" }
   s.requires_arc = true
-  s.source_files = "ios/RNZohoDeskPortalLiveChat/*.{h,m,mm}"
+  s.source_files = "ios/RNZohoDeskPortalLiveChat/*.{h,m,mm,swift}"
 
   s.dependency "React"
-  s.dependency 'ZohoDeskPortalChatKit', '4.0.0'
+  s.dependency 'ZohoDeskPortalChatKit', '4.0.2'
 end
