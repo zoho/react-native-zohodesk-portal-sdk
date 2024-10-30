@@ -12,5 +12,14 @@ module.exports = {
 
     showCategory: function(withPermalink){
       RNZohoDeskPortalKB.showCategory(withPermalink);
+    },
+
+    setConfiguration: function(ZDKBConfiguration={}){
+      const config = {
+        disableArticleLike: ZDKBConfiguration?.disableArticleLike ?? false,
+        disableArticleDislike: ZDKBConfiguration?.disableArticleDislike ?? false,
+        disableArticleDetailSearch: ZDKBConfiguration?.disableArticleDetailSearch ?? false
+      };
+      RNZohoDeskPortalKB.setConfiguration(config);
     }
 }
