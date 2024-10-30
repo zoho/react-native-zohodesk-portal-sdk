@@ -19,7 +19,11 @@ const ZDPortalCommunityWrapper  = {
       };
 
       RNZohoDeskPortalCommunity.updateConfiguration(config);
-  }
+  },
+
+  showTopic(withID){
+    RNZohoDeskPortalCommunity.showTopic(withID)
+  },
 }
 
 module.exports = { ZDPortalCommunityWrapper };
