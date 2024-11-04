@@ -40,6 +40,11 @@ class RNZohoDeskPortalTicketModule(reactContext: ReactApplicationContext) :
     ZDPortalTickets.setConfiguration(configuration)
   }
 
+  @ReactMethod
+    fun showTicketDetail(ticketId: String){
+        ZDPortalTickets.show(currentActivity,ticketId)
+    }
+    
   companion object {
     const val NAME = "RNZohoDeskPortalTickets"
   }

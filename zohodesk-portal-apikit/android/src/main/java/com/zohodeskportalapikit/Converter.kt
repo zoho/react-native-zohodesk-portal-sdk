@@ -57,6 +57,13 @@ object Converter {
         return jsonArray
     }
     
+    fun convertReadableMapToHashMapAny(readableMap: ReadableMap): HashMap<String, Any>{
+        val jsonObject = convertReadableMapToJson(readableMap)
+        val gson = Gson()
+        val type = object : TypeToken<HashMap<String, Any>>() {}.type
+        return gson.fromJson(jsonObject.toString(), type)
+    }
+    
     fun convertReadableMapToHashMap(readableMap: ReadableMap): HashMap<String, String> {
         val jsonObject = convertReadableMapToJson(readableMap)
         val gson = Gson()

@@ -1,4 +1,5 @@
 const {NativeModules} = require('react-native');
+import { ZDPTicket } from '../../../zohodesk-portal-apikit/src/Models/ZDPTicket';
 const {RNZohoDeskPortalSubmitTicket} = NativeModules;
 
 class ZDCustomizedTicketField {
@@ -81,6 +82,8 @@ module.exports = {
     ZDVisibleTicketField,
 
     getCallbackOnCreate: function(successCallback,errorCallback){
-      RNZohoDeskPortalSubmitTicket.getCallbackOnCreate(successCallback,errorCallback)
+      RNZohoDeskPortalSubmitTicket.getCallbackOnCreate((ticket)=>{
+        successCallback(ZDPTicket.fromJSON(JSON.parse(ticket)))
+      },errorCallback)
     }
 };

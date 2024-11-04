@@ -20,5 +20,10 @@ module.exports = {
       disableTicketDetailSearch: ZDPTicketConfiguration?.disableTicketDetailSearch ?? false
     };
     RNZohoDeskPortalTickets.updateConfiguration(config);
+  },
+
+  showTicketDetail: function(ticketId){
+    RNZohoDeskPortalTickets.showTicketDetail(ticketId);
   }
+
 }
