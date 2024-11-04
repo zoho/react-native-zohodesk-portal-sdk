@@ -1,0 +1,24 @@
+{
+  "name": "@zohocorp/zohodesk-portal-apikit",
+  "version": "3.0.0",
+  "description": "ZohoDeskPortalApikit",
+  "source": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoho/react-native-zohodesk-portal-sdk.git"
+  },
+  "author": "zohodesk-mobile",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoho/react-native-zohodesk-portal-sdk/issues"
+  },
+  "homepage": "https://help.zoho.com/portal/en/kb/desk/developer-space/asap/react-native-sdk",
+  "keywords": [
+    "Zoho",
+    "Desk"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

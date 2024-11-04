@@ -1,0 +1,23 @@
+{
+  "name": "@zohocorp/zohodesk-portal-chatkit",
+  "version": "3.0.0",
+  "description": "ZohoDeskPortalChatkit", 
+   "source": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoho/react-native-zohodesk-portal-sdk.git"
+  },
+  "author": "zohodesk-mobile",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoho/react-native-zohodesk-portal-sdk/issues"
+  },
+  "homepage": "https://help.zoho.com/portal/en/kb/desk/developer-space/asap/react-native-sdk",
+  "keywords": [
+    "Zoho",
+    "Desk"
+  ],
+  "peerDependencies": {
+    "@zohocorp/zohodesk-portal-configuration": "3.0.0"
+  }
+}
