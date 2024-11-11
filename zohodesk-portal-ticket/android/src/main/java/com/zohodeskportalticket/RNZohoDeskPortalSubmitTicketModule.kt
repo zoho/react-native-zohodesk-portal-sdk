@@ -13,8 +13,6 @@ import com.zoho.desk.asap.asap_tickets.utils.PreFillTicketField
 import com.facebook.react.bridge.ReadableArray
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.zoho.desk.asap.RNZDCustomizedTicketForm
-import com.zoho.desk.asap.RNZDVisibleTicketField
 import com.zoho.desk.asap.api.ZDPortalCallback
 import com.zoho.desk.asap.api.ZDPortalException
 import com.zoho.desk.asap.api.response.Ticket
