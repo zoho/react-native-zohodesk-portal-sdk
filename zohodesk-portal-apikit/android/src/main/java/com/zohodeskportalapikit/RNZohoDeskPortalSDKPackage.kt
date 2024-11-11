@@ -6,7 +6,7 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.uimanager.ViewManager
 
 
-class RNZohoDeskortalSDKPackage : ReactPackage {
+class RNZohoDeskPortalSDKPackage : ReactPackage {
   override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
     return listOf(RNZohoDeskPortalSDK(reactContext))
   }
