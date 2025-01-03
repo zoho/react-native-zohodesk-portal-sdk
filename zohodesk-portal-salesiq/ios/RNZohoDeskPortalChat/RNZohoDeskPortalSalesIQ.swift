@@ -24,7 +24,7 @@ class RNZohoDeskPortalSalesIQ: NSObject {
     }
 
     @objc
-    func setGuestUser(email: String, name: String, phone: String) {
+    func setGuestUser(_ email: String, name: String, phone: String) {
         ZDPortalSalesIQ.setGuestUser(email: email, displayName: name, phoneNumber: phone)
     }
 }
