@@ -5,12 +5,12 @@ ZohoDeskPortalCommunity
 ## Installation
 
 ```sh
-npm install zohodesk-portal-community
+npm install @zohocorp/zohodesk-portal-community
 ```
 
 ## Usage
 
 
 ```js
-import { ZohoDeskPortalCommunity } from 'zohodesk-portal-community';
+import {ZohoDeskPortalCommunity} from '@zohocorp/zohodesk-portal-community';
 ```

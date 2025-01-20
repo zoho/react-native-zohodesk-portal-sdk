@@ -5,12 +5,12 @@ ZohoDeskPortalConfiguration
 ## Installation
 
 ```sh
-npm install zohodesk-portal-configuration
+npm install @zohocorp/zohodesk-portal-configuration
 ```
 
 ## Usage
 
 
 ```js
-import { ZohoDeskPortalConfiguration } from 'zohodesk-portal-configuration';
+import {ZohoDeskPortalConfiguration} from '@zohocorp/zohodesk-portal-configuration';
 ```

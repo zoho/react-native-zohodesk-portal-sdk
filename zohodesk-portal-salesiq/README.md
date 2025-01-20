@@ -5,12 +5,12 @@ ZohoDeskPortalSalesIQ
 ## Installation
 
 ```sh
-npm install zohodesk-portal-salesiq
+npm install @zohocorp/zohodesk-portal-kb
 ```
 
 ## Usage
 
 
 ```js
-import { ZohoDeskPortalSalesIQ } from 'zohodesk-portal-salesiq';
+import {ZohoDeskPortalSalesIQ} from '@zohocorp/zohodesk-portal-salesiq';
 ```

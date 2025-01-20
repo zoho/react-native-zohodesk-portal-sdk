@@ -5,12 +5,12 @@ ZohoDeskPortalTicket
 ## Installation
 
 ```sh
-npm install zohodesk-portal-ticket
+npm install @zohocorp/zohodesk-portal-ticket
 ```
 
 ## Usage
 
 
 ```js
-import { ZohoDeskPortalTicket } from 'zohodesk-portal-ticket';
+import {ZohoDeskPortalTicket, ZohoDeskPortalSubmitTicket} from '@zohocorp/zohodesk-portal-ticket';
 ```
