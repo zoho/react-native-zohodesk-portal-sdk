@@ -10,6 +10,7 @@ import com.zoho.desk.asap.siq.Component
 import com.zoho.desk.asap.siq.ZDPortalChatUser
 import com.zoho.desk.asap.siq.ZohoDeskPortalSalesIQ
 import com.facebook.react.bridge.Callback
+import com.zoho.desk.asap.siq.LauncherMode
 import com.zoho.desk.asap.siq.SalesIQInitCallback
 
 class RNZDPoratalSalesIQModule(reactContext: ReactApplicationContext) :
