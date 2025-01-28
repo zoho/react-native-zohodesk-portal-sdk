@@ -43,11 +43,6 @@ class RNZohoDeskPortalSalesIQ: NSObject {
     }
     
     @objc
-    func setOfflineMessage(_ message: String){
-        ZDPortalSalesIQ.setOfflineMessage(message)
-    }
-    
-    @objc
     func setKnowledgeBaseVisibility(_ enable: Bool){
         ZDPortalSalesIQ.setKnowledgeBaseVisibility(enable)
     }

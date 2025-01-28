@@ -51,10 +51,6 @@ class RNZDPoratalSalesIQModule(reactContext: ReactApplicationContext) :
     ZohoDeskPortalSalesIQ.setConversationTitle(title)
   }
 
-  @ReactMethod
-  fun setOfflineMessage(message: String){
-    ZohoDeskPortalSalesIQ.setOfflineMessage(message)
-  }
 
   @ReactMethod
   fun setKnowledgeBaseVisibility(enable: Boolean){

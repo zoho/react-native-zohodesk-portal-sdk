@@ -21,10 +21,6 @@ const RNZohoDeskPortalSalesIQWrapper = {
       RNZohoDeskPortalSalesIQ.setConversationTitle(title);
     },
 
-    setOfflineMessage: function(message){
-      RNZohoDeskPortalSalesIQ.setOfflineMessage(message);
-    },
-
     setKnowledgeBaseVisibility: function(enable){
       RNZohoDeskPortalSalesIQ.setKnowledgeBaseVisibility(enable);
     },
