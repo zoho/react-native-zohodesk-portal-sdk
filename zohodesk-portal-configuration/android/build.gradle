@@ -101,7 +101,7 @@ dependencies {
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
-  implementation ('com.zoho.desk:asap-common:4.2')
+  implementation ('com.zoho.desk:asap-common:4.2.0')
   implementation project(':zohocorp_zohodesk-portal-apikit')
   implementation 'com.google.code.gson:gson:2.11.0'
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
