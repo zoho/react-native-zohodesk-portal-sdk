@@ -5,12 +5,12 @@ ZohoDeskPortalCore
 ## Installation
 
 ```sh
-npm install zohodesk-portal-core
+npm install @zohocorp/zohodesk-portal-core
 ```
 
 ## Usage
 
 
 ```js
-import { ZohoDeskPortalHome } from 'zohodesk-portal-core';
+import {ZohoDeskPortalHome} from '@zohocorp/zohodesk-portal-core';
 ```

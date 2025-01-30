@@ -5,12 +5,12 @@ ZohoDeskPortalApikit
 ## Installation
 
 ```sh
-npm install zohodesk-portal-apikit
+npm install @zohocorp/zohodesk-portal-apikit
 ```
 
 ## Usage
 
 
 ```js
-import { ZohoDeskPortalSDK } from 'zohodesk-portal-apikit';
+import {ZohoDeskPortalSDK} from '@zohocorp/zohodesk-portal-apikit';
 ```
