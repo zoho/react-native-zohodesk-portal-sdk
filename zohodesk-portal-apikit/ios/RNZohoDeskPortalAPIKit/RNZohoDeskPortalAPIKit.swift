@@ -100,15 +100,26 @@ class RNZohoDeskPortalSDK: NSObject {
     
 
     
-    func handleCallback<T: Encodable>(result: T?,error: Error?,
-                                      successCallback: @escaping RCTResponseSenderBlock,
-                                      errorCallback: @escaping RCTResponseSenderBlock)
-    {
+    func handleCallback<T>(result: T?, error: Error?,
+                           successCallback: @escaping RCTResponseSenderBlock,
+                           errorCallback: @escaping RCTResponseSenderBlock) {
         if let error = error {
             let errorObject: [String: Any] = ["errorCode": (error as NSError).code, "errorMsg": error.localizedDescription]
             errorCallback([errorObject])
         } else if let result = result {
-            successCallback([result.jsonString ?? ""])
+            if let encodableResult = result as? Encodable {
+                successCallback([encodableResult.jsonString ?? ""])
+            } else if let dictionaryResult = result as? [String: Any] {
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: dictionaryResult, options: [])
+                    let jsonString = String(data: jsonData, encoding: .utf8)
+                    successCallback([jsonString ?? ""])
+                } catch {
+                    errorCallback([["errorCode": -1, "errorMsg": "Failed to encode response"]])
+                }
+            } else {
+                errorCallback([["errorCode": -2, "errorMsg": "Unsupported response type"]])
+            }
         }
     }
     
@@ -241,6 +252,20 @@ class RNZohoDeskPortalSDK: NSObject {
                     print("Error serializing JSON: \(error)")
                 }
             }
+        }
+    }
+
+    @objc
+    func addComment(_ params: [String: Any], toTicketID: String, successCallback: @escaping RCTResponseSenderBlock, errorCallback: @escaping RCTResponseSenderBlock) {
+        ZohoDeskPortalSDK.Ticket.add(params, toTicketID: toTicketID) { (comment, error) in
+            self.handleCallback(result: comment, error: error, successCallback: successCallback, errorCallback: errorCallback)
+        }
+    }
+    
+    @objc
+    func addReply(_ params: [String: Any], toTicketID: String, successCallback: @escaping RCTResponseSenderBlock, errorCallback: @escaping RCTResponseSenderBlock){
+        ZohoDeskPortalSDK.Ticket.reply(params, toTicketID: toTicketID){(reply, error) in
+            self.handleCallback(result: reply, error: error, successCallback: successCallback, errorCallback: errorCallback)
         }
     }
 }

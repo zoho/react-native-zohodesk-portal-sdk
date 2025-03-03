@@ -121,6 +121,18 @@ const ZDPortalSDKWrapper = {
             console.log(ticket)
             successCallback(ZDPTicket.fromJSON(JSON.parse(ticket)))
         }, errorCallback)
+    },
+
+    addComment: function(params,toTicketID,successCallback,errorCallback){
+        RNZohoDeskPortalSDK.addComment(params,toTicketID,(comment)=>{
+            successCallback(comment)
+        },errorCallback)
+    },
+
+    addReply: function(params,toTicketID, successCallback,errorCallback){
+        RNZohoDeskPortalSDK.addReply(params,toTicketID,(reply)=>{
+            successCallback(reply)
+        },errorCallback)
     }
 };
 
