@@ -41,6 +41,7 @@ class RNZohoDeskPortalSDK: NSObject {
             case "SA": dataCenter = .SA
             default: dataCenter = .US
         }
+        PNConstants.refererName = "ZohoDeskPortalSDKiOS react-native"
         ZohoDeskPortalSDK.initialize(orgID: orgId, appID: appId, dataCenter: dataCenter)
     }
     
