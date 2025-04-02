@@ -1,6 +1,6 @@
 {
   "name": "@zohocorp/zohodesk-portal-apikit",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "ZohoDeskPortalApikit",
   "source": "./index.js",
   "repository": {
