@@ -63,11 +63,19 @@ const RNZohoDeskPortalSalesIQWrapper = {
     },
 
     setThemeForAndroid: function(theme) {
-      RNZohoDeskPortalSalesIQ.setThemeForAndroid(theme);
+      if (Platform.OS === 'android' && RNZohoDeskPortalSalesIQ?.setThemeForAndroid) {
+        RNZohoDeskPortalSalesIQ.setThemeForAndroid(theme);
+      } else {
+        console.warn('setThemeForAndroid is only available on Android.');
+      }
     },
 
     syncThemeWithOSForAndroid: function(sync) {
-      RNZohoDeskPortalSalesIQ.syncThemeWithOSForAndroid(sync);
+      if (Platform.OS === 'android' && RNZohoDeskPortalSalesIQ?.syncThemeWithOSForAndroid) {
+        RNZohoDeskPortalSalesIQ.syncThemeWithOSForAndroid(sync);
+      } else {
+        console.warn('syncThemeWithOSForAndroid is only available on Android.');
+      }
     },
 
     visibilityMode: {
