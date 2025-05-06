@@ -137,4 +137,18 @@ class RNZDPoratalSalesIQModule(reactContext: ReactApplicationContext) :
     }
   }
 
+  @ReactMethod
+  fun syncThemeWithOSForAndroid(sync: Boolean) {
+    ZohoDeskPortalSalesIQ.syncThemeWithOS(sync);
+  }
+
+  @ReactMethod
+  fun setThemeForAndroid(themeName: String) {
+    val themeResId = reactContext.resources.getIdentifier(themeName, "style", reactContext.packageName)
+    if (themeResId != 0) {
+        ZohoDeskPortalSalesIQ.setTheme(themeResId);
+    } else {
+        
+    }
+  }
 }

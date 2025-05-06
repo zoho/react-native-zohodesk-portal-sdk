@@ -62,6 +62,14 @@ const RNZohoDeskPortalSalesIQWrapper = {
       return salesIQEventEmitter.addListener('onSalesIQInitError', callback);
     },
 
+    setThemeForAndroid: function(theme) {
+      RNZohoDeskPortalSalesIQ.setThemeForAndroid(theme);
+    },
+
+    syncThemeWithOSForAndroid: function(sync) {
+      RNZohoDeskPortalSalesIQ.syncThemeWithOSForAndroid(sync);
+    },
+
     visibilityMode: {
       ALWAYS: "always",
       NEVER: "never",
