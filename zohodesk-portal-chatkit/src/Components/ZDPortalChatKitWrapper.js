@@ -23,6 +23,15 @@ module.exports = {
     },
     updateBMSessionVariable: function(sessionVariable) {
         RNZohoDeskPortalChatKit.updateBMSessionVariable(sessionVariable);
+    },
+    clearGC: function() {
+        RNZohoDeskPortalChatKit.clearGC(); 
+    },
+    clearBM: function() {
+        RNZohoDeskPortalChatKit.clearBM();
+    },
+    clearAnswerBot: function() {
+        RNZohoDeskPortalChatKit.clearAnswerBot();
     }
 
 }
