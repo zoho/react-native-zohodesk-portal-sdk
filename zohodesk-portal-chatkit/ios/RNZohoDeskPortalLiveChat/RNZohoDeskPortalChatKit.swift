@@ -38,22 +38,37 @@ class RNZohoDeskPortalChatKit: NSObject {
     }
 
     @objc
-    public static func setGCSessionVariable(sessionVariables: [[String: Any]]){
+    func setGCSessionVariable(_ sessionVariables: [[String: Any]]){
        ZDPortalChatKit.setGCSessionVariable(sessionVariables: sessionVariables)
     }
   
     @objc
-    func updateGCSessionVariable(sessionVariables: [[String: Any]]){
+    func updateGCSessionVariable(_ sessionVariables: [[String: Any]]){
       ZDPortalChatKit.updateGCSessionVariable(sessionVariables: sessionVariables)
     }
 
     @objc 
-    func setBMSessionVariable(sessionVariables: [[String: Any]]){
+    func setBMSessionVariable(_ sessionVariables: [[String: Any]]){
       ZDPortalChatKit.setBMSessionVariable(sessionVariables: sessionVariables)
     }
 
     @objc
-    func updateBMSessionVariable(sessionVariables: [[String: Any]]){
+    func updateBMSessionVariable(_ sessionVariables: [[String: Any]]){
       ZDPortalChatKit.updateBMSessionVariable(sessionVariables: sessionVariables)
     }
+  
+  @objc
+  func clearGC() {
+    ZDPortalChatKit.clearGCData()
+  }
+  
+  @objc
+  func clearBM() {
+    ZDPortalChatKit.clearBMData()
+  }
+  
+  @objc
+  func clearAnswerBot() {
+    ZDPortalChatKit.clearAnswerBotData()
+  }
 }

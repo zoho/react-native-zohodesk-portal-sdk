@@ -27,5 +27,4 @@ RCT_EXTERN_METHOD(updateUserInformation:(NSDictionary *)userInfo successCallback
 RCT_EXTERN_METHOD(getTicketFields:(NSDictionary *)params featureFlags:(NSString *)flags  successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
 RCT_EXTERN_METHOD(getTicketForm:(NSDictionary *)params featureFlags:(NSString *)flags  successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
 RCT_EXTERN_METHOD(createTicket:(NSDictionary *)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
-RCT_EXTERN_METHOD(createGuestTicket:(NSDictionary *)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseSenderBlock)errorCallback)
 @end
