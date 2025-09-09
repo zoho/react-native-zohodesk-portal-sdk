@@ -114,13 +114,6 @@ const ZDPortalSDKWrapper = {
             console.log(ticket)
             successCallback(ZDPTicket.fromJSON(JSON.parse(ticket)))
         },errorCallback)
-    },
-
-    createGuestTicket: function(params, successCallback,errorCallback){
-        RNZohoDeskPortalSDK.createGuestTicket(params,(ticket)=>{
-            console.log(ticket)
-            successCallback(ZDPTicket.fromJSON(JSON.parse(ticket)))
-        }, errorCallback)
     }
 };
 

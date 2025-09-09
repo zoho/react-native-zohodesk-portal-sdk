@@ -42,6 +42,7 @@ class RNZohoDeskPortalConfigurationModule(reactContext: ReactApplicationContext)
       val systemTheme = 3
       private var themeType = ZDPThemeType.SYSTEM
 
+      @JvmStatic
       fun setCustomFont(builder: RNZDPFont){
         ZDPortalConfiguration.setFontBuilder(convertToZDPFont(builder))
       }
@@ -61,7 +62,7 @@ class RNZohoDeskPortalConfigurationModule(reactContext: ReactApplicationContext)
           .build()
       }
 
-
+    @JvmStatic
     fun setThemeBuilder(themeColors: HashMap<String, String>, isDarkTheme: Boolean) {
       val themeBuilder = ZDPTheme.Builder(isDarkTheme)
       themeColors.forEach { (key, value) ->
@@ -84,7 +85,8 @@ class RNZohoDeskPortalConfigurationModule(reactContext: ReactApplicationContext)
       }
       ZDPortalConfiguration.setThemeBuilder(themeBuilder.build())
     }
-
+     
+    @JvmStatic
     fun handleNotification(application: Context, extras: Map<String,String>, icon: Int) {
       if (RNZohoDeskPortalSDK.isInitDone) {
           ZDPortalConfiguration.handleNotification(application, extras as MutableMap<Any?, Any?>, icon)

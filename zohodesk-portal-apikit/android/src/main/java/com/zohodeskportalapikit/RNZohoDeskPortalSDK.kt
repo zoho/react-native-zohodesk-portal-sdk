@@ -435,28 +435,5 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
             ZDPortalTicketsAPI.createTicket(createTicketCallback,Converter.convertReadableMapToHashMapAny(params),headers)
         }
     }
-
-    @ReactMethod
-    fun createGuestTicket(params: ReadableMap, successCallback: Callback, errorCallback: Callback){
-        val handler = Handler(Looper.getMainLooper())
-        handler.post { 
-            val createGuestTicketCallback = object : ZDPortalCallback.CreateGuestTicketCallback{
-                override fun onGuestTicketCreated(ticketData: Ticket) {
-                    val gson = Gson()
-                    val jsonString = gson.toJson(ticketData)
-                    successCallback.invoke(jsonString)
-                }
-                
-                override fun onException(exception: ZDPortalException) {
-                    val errorMap = Arguments.createMap()
-                    errorMap.putInt("errorCode", exception.errorCode)
-                    errorMap.putString("errorMsg", exception.errorMsg)
-                    errorCallback.invoke(errorMap)
-                }
-            }
-            val headers = HashMap<String, String>()
-            ZDPortalTicketsAPI.createGuestTicket(createGuestTicketCallback,Converter.convertReadableMapToHashMapAny(params),headers)
-        }
-    }
 }
 

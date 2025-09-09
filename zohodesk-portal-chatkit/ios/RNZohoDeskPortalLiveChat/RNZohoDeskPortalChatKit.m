@@ -11,4 +11,7 @@
     RCT_EXTERN_METHOD(updateGCSessionVariable:(NSArray *)sessionVariable)
     RCT_EXTERN_METHOD(setBMSessionVariable:(NSArray *)sessionVariable)
     RCT_EXTERN_METHOD(updateBMSessionVariable:(NSArray *)sessionVariable)
+    RCT_EXTERN_METHOD(clearGC)
+    RCT_EXTERN_METHOD(clearBM)
+    RCT_EXTERN_METHOD(clearAnswerBot)
 @end

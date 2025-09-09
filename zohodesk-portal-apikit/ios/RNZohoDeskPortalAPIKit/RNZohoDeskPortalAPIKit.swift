@@ -217,33 +217,6 @@ class RNZohoDeskPortalSDK: NSObject {
             self.handleCallback(result: ticket, error: error, successCallback: successCallback, errorCallback: errorCallback)
         }
     }
-    
-    @objc
-    func createGuestTicket(_ params: [String: Any],
-                            successCallback: @escaping RCTResponseSenderBlock,
-                           errorCallback: @escaping RCTResponseSenderBlock){
-        ZohoDeskPortalSDK.Ticket.addAsGuest(withFields: params){ (ticket,error) in
-            if let error = error {
-                let errorObject: [String: Any] = ["errorCode": (error as NSError).code, "errorMsg": error.localizedDescription]
-                errorCallback([errorObject])
-            } else if let result = ticket {
-                let dataModal: [String: Any] = [
-                    "ticketNumber": result
-                ]
-
-                do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: dataModal, options: [])
-                    if let jsonString = String(data: jsonData, encoding: .utf8) {
-                        successCallback([jsonString])
-                    } else {
-                        print("Failed to convert JSON data to string.")
-                    }
-                } catch {
-                    print("Error serializing JSON: \(error)")
-                }
-            }
-        }
-    }
 }
 
 extension Encodable{

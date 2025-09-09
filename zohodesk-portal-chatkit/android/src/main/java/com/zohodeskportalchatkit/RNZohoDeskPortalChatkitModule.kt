@@ -20,6 +20,21 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
+  fun clearBM() {
+    ZohoDeskPortalChatKit.clearBM(currentActivity)
+  }
+
+  @ReactMethod
+  fun clearGC() {
+    ZohoDeskPortalChatKit.clearGC(currentActivity)
+  }
+
+  @ReactMethod
+  fun clearAnswerBot() {
+    ZohoDeskPortalChatKit.clearAnswerBot(currentActivity)
+  }
+
+  @ReactMethod
   fun showGC() {
     ZohoDeskPortalChatKit.showGC(currentActivity)
   }
