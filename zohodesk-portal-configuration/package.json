@@ -1,6 +1,6 @@
 {
   "name": "@zohocorp/zohodesk-portal-configuration",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "ZohoDeskPortalConfiguration",
   "source": "index.js",
   "repository": {
@@ -18,6 +18,6 @@
     "Desk"
   ],
   "peerDependencies": {
-    "@zohocorp/zohodesk-portal-apikit": "3.3.0"
+    "@zohocorp/zohodesk-portal-apikit": "3.3.1"
   }
 }
