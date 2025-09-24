@@ -1,6 +1,6 @@
 {
   "name": "@zohocorp/zohodesk-portal-salesiq",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "ZohoDeskPortalSalesIQ", 
   "source": "index.js",
   "repository": {
@@ -18,6 +18,6 @@
     "Desk"
   ],
   "peerDependencies": {
-    "@zohocorp/zohodesk-portal-configuration": "3.3.0"
+    "@zohocorp/zohodesk-portal-configuration": "3.3.1"
   }
 }
