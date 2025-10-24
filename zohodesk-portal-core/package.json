@@ -1,6 +1,6 @@
 {
   "name": "@zohocorp/zohodesk-portal-core",
-  "version": "3.3.2",
+  "version": "3.3.3-beta.0",
   "description": "ZohoDeskPortalCore",
   "source": "index.js",
   "repository": {
@@ -18,9 +18,9 @@
     "Desk"
   ],
   "peerDependencies": {
-    "@zohocorp/zohodesk-portal-configuration": "3.3.2",
-    "@zohocorp/zohodesk-portal-kb": "3.3.2",
-    "@zohocorp/zohodesk-portal-community": "3.3.2",
-    "@zohocorp/zohodesk-portal-ticket": "3.3.2"
+    "@zohocorp/zohodesk-portal-configuration": "3.3.3-beta.0",
+    "@zohocorp/zohodesk-portal-kb": "3.3.3-beta.0",
+    "@zohocorp/zohodesk-portal-community": "3.3.3-beta.0",
+    "@zohocorp/zohodesk-portal-ticket": "3.3.3-beta.0"
   }
 }
