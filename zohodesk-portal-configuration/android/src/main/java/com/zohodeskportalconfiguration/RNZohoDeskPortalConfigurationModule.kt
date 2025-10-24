@@ -35,7 +35,8 @@ class RNZohoDeskPortalConfigurationModule(reactContext: ReactApplicationContext)
     const val hint = "hint"
     const val formFieldBorder = "formFieldBorder"
     const val errorColor = "errorColor"
-
+    var _lightThemeColors:HashMap<String, String>? = null
+    var _darkThemeColors:HashMap<String, String>? = null
            
       val lightTheme = 1
       val darkTheme = 2
@@ -62,28 +63,10 @@ class RNZohoDeskPortalConfigurationModule(reactContext: ReactApplicationContext)
           .build()
       }
 
+
     @JvmStatic
     fun setThemeBuilder(themeColors: HashMap<String, String>, isDarkTheme: Boolean) {
-      val themeBuilder = ZDPTheme.Builder(isDarkTheme)
-      themeColors.forEach { (key, value) ->
-        when (key) {
-          colorPrimary -> themeBuilder.setColorPrimary(Color.parseColor(value))
-          colorPrimaryDark -> themeBuilder.setColorPrimaryDark(Color.parseColor(value))
-          colorAccent -> themeBuilder.setColorAccent(Color.parseColor(value))
-          windowBackground -> themeBuilder.setWindowBackground(Color.parseColor(value))
-          itemBackground -> themeBuilder.setItemBackground(Color.parseColor(value))
-          textColorPrimary -> themeBuilder.setTextColorPrimary(Color.parseColor(value))
-          textColorSecondary -> themeBuilder.setTextColorSecondary(Color.parseColor(value))
-          colorOnPrimary -> themeBuilder.setColorOnPrimary(Color.parseColor(value))
-          iconTint -> themeBuilder.setIconTint(Color.parseColor(value))
-          divider -> themeBuilder.setDividerColor(Color.parseColor(value))
-          listSelector -> themeBuilder.setListSelectorColor(Color.parseColor(value))
-          hint -> themeBuilder.setHintColor(Color.parseColor(value))
-          formFieldBorder -> themeBuilder.setFormFieldBorder(Color.parseColor(value))
-          errorColor -> themeBuilder.setErrorColor(Color.parseColor(value))
-        }
-      }
-      ZDPortalConfiguration.setThemeBuilder(themeBuilder.build())
+      if(isDarkTheme) _darkThemeColors = themeColors else _lightThemeColors = themeColors
     }
      
     @JvmStatic
@@ -112,6 +95,9 @@ class RNZohoDeskPortalConfigurationModule(reactContext: ReactApplicationContext)
 
   @ReactMethod
   fun setThemeType(type: Int) {
+    applyThemeColors(_lightThemeColors, false)
+     applyThemeColors(_darkThemeColors, true)
+
     themeType = when (type) {
       lightTheme -> ZDPThemeType.LIGHT
       darkTheme -> ZDPThemeType.DARK
@@ -120,6 +106,32 @@ class RNZohoDeskPortalConfigurationModule(reactContext: ReactApplicationContext)
     }
     ZDPortalConfiguration.setThemeType(themeType)
   }
+
+    private fun applyThemeColors(colors: Map<String, String>?, isDark: Boolean) {
+        colors?.let {
+            val themeBuilder = ZDPTheme.Builder(isDark)
+            it.forEach { (key, value) ->
+                val color = Color.parseColor(value)
+                when (key) {
+                    colorPrimary -> themeBuilder.setColorPrimary(color)
+                    colorPrimaryDark -> themeBuilder.setColorPrimaryDark(color)
+                    colorAccent -> themeBuilder.setColorAccent(color)
+                    windowBackground -> themeBuilder.setWindowBackground(color)
+                    itemBackground -> themeBuilder.setItemBackground(color)
+                    textColorPrimary -> themeBuilder.setTextColorPrimary(color)
+                    textColorSecondary -> themeBuilder.setTextColorSecondary(color)
+                    colorOnPrimary -> themeBuilder.setColorOnPrimary(color)
+                    iconTint -> themeBuilder.setIconTint(color)
+                    divider -> themeBuilder.setDividerColor(color)
+                    listSelector -> themeBuilder.setListSelectorColor(color)
+                    hint -> themeBuilder.setHintColor(color)
+                    formFieldBorder -> themeBuilder.setFormFieldBorder(color)
+                    errorColor -> themeBuilder.setErrorColor(color)
+                }
+            }
+            ZDPortalConfiguration.setThemeBuilder(themeBuilder.build())
+        }
+    }
 
   
   @ReactMethod

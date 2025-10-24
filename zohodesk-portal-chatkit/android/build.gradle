@@ -102,7 +102,7 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation project(':zohocorp_zohodesk-portal-apikit')
-  implementation "com.zoho.desk:asap-chatkit:4.6.3"
+  implementation "com.zoho.desk:asap-chatkit:4.6.4_BETA_02"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
