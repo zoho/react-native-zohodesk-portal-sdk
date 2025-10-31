@@ -24,7 +24,7 @@ class RNZDPoratalSalesIQModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun show() {
       Handler(Looper.getMainLooper()).post {
-        ZohoDeskPortalSalesIQ.show(currentActivity)
+        ZohoDeskPortalSalesIQ.show(reactApplicationContext.currentActivity)
       }
   }
 

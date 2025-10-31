@@ -15,8 +15,9 @@ object Converter {
         return if (this.hasKey(key)) this.getBoolean(key) else default
     }
     
-    fun convertReadableMapToJson(readableMap: ReadableMap): JSONObject {
+    fun convertReadableMapToJson(readableMap: ReadableMap?): JSONObject {
         val jsonObject = JSONObject()
+        readableMap?.let{
         val iterator = readableMap.keySetIterator()
 
         while (iterator.hasNextKey()) {
@@ -26,20 +27,22 @@ object Converter {
                     ReadableType.String -> jsonObject.put(key, readableMap.getString(key))
                     ReadableType.Number -> jsonObject.put(key, readableMap.getDouble(key))
                     ReadableType.Boolean -> jsonObject.put(key, readableMap.getBoolean(key))
-                    ReadableType.Map -> jsonObject.put(key, convertReadableMapToJson(readableMap.getMap(key)!!))
-                    ReadableType.Array -> jsonObject.put(key, convertReadableArrayToJson(readableMap.getArray(key)!!))
+                    ReadableType.Map -> jsonObject.put(key, convertReadableMapToJson(readableMap.getMap(key)))
+                    ReadableType.Array -> jsonObject.put(key, convertReadableArrayToJson(readableMap.getArray(key)))
                     else -> {}
                 }
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
         }
+        }
 
         return jsonObject
     }
 
-    fun convertReadableArrayToJson(readableArray: ReadableArray): JSONArray {
+    fun convertReadableArrayToJson(readableArray: ReadableArray?): JSONArray {
         val jsonArray = JSONArray()
+        readableArray?.let{
         for (i in 0 until readableArray.size()) {
             try {
                 when (readableArray.getType(i)) {
@@ -53,6 +56,7 @@ object Converter {
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
+        }
         }
         return jsonArray
     }

@@ -21,32 +21,32 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun clearBM() {
-    ZohoDeskPortalChatKit.clearBM(currentActivity)
+    ZohoDeskPortalChatKit.clearBM(reactApplicationContext.currentActivity)
   }
 
   @ReactMethod
   fun clearGC() {
-    ZohoDeskPortalChatKit.clearGC(currentActivity)
+    ZohoDeskPortalChatKit.clearGC(reactApplicationContext.currentActivity)
   }
 
   @ReactMethod
   fun clearAnswerBot() {
-    ZohoDeskPortalChatKit.clearAnswerBot(currentActivity)
+    ZohoDeskPortalChatKit.clearAnswerBot(reactApplicationContext.currentActivity)
   }
 
   @ReactMethod
   fun showGC() {
-    ZohoDeskPortalChatKit.showGC(currentActivity)
+    ZohoDeskPortalChatKit.showGC(reactApplicationContext.currentActivity)
   }
 
   @ReactMethod
   fun showAnswerBot() {
-    ZohoDeskPortalChatKit.showAnswerBot(currentActivity)
+    ZohoDeskPortalChatKit.showAnswerBot(reactApplicationContext.currentActivity)
   }
 
   @ReactMethod
   fun showBM() {
-    ZohoDeskPortalChatKit.showBM(currentActivity)
+    ZohoDeskPortalChatKit.showBM(reactApplicationContext.currentActivity)
   }
 
   private fun sessionVariableConverter(params: ReadableArray): ArrayList<HashMap<String, Any>> {
@@ -59,7 +59,7 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun setGCSessionVariable(params: ReadableArray) {
     ZohoDeskPortalChatKit.setGCSessionVariable(
-      currentActivity,
+      reactApplicationContext.currentActivity,
       sessionVariableConverter(params)
     )
   }
@@ -67,7 +67,7 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun updateGCSessionVariable(params: ReadableArray) {
     ZohoDeskPortalChatKit.updateGCSessionVariable(
-      currentActivity,
+      reactApplicationContext.currentActivity,
       sessionVariableConverter(params)
     )
   }
@@ -75,7 +75,7 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun setBMSessionVariable(params: ReadableArray) {
     ZohoDeskPortalChatKit.setBMSessionVariable(
-      currentActivity,
+      reactApplicationContext.currentActivity,
       sessionVariableConverter(params)
     )
   }
@@ -83,7 +83,7 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun updateBMSessionVariable(params: ReadableArray) {
     ZohoDeskPortalChatKit.updateBMSessionVariable(
-      currentActivity,
+      reactApplicationContext.currentActivity,
       sessionVariableConverter(params)
     )
   }

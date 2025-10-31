@@ -17,7 +17,7 @@ class RNZohodeskPortalCoreModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun show() {
-      ZDPortalHome.show(currentActivity)
+      ZDPortalHome.show(reactApplicationContext.currentActivity)
   }
 
 

@@ -18,7 +18,7 @@ class RNZohoDeskPortalTicketModule(reactContext: ReactApplicationContext) :
 
  @ReactMethod
   fun show() {
-    ZDPortalTickets.show(currentActivity)
+    ZDPortalTickets.show(reactApplicationContext.currentActivity)
   }
 
   @ReactMethod
@@ -42,7 +42,7 @@ class RNZohoDeskPortalTicketModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
     fun showTicketDetail(ticketId: String){
-        ZDPortalTickets.show(currentActivity,ticketId)
+        ZDPortalTickets.show(reactApplicationContext.currentActivity,ticketId)
     }
     
   companion object {
