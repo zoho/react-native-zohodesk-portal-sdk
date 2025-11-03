@@ -49,7 +49,7 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
             val portalSDK = ZohoDeskPortalSDK.getInstance(application)
             ZohoDeskAPIImpl.setRefererHeader("react-native")
             var dc = ZohoDeskPortalSDK.DataCenter.US
-            when (dcStr.toLowerCase()) {
+            when (dcStr.lowercase()) {
                 "eu" -> dc = ZohoDeskPortalSDK.DataCenter.EU
                 "cn" -> dc = ZohoDeskPortalSDK.DataCenter.CN
                 "in" -> dc = ZohoDeskPortalSDK.DataCenter.IN

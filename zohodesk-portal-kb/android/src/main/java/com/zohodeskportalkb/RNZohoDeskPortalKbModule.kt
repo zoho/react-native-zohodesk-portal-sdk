@@ -17,17 +17,17 @@ class RNZohoDeskPortalKbModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun show() {
-      ZDPortalKB.show(currentActivity)
+      ZDPortalKB.show(reactApplicationContext.currentActivity)
   }
 
   @ReactMethod
   fun showArticle(withPermalink: String) {
-    ZDPortalKB.showArticleWithPermalink(currentActivity, withPermalink)
+    ZDPortalKB.showArticleWithPermalink(reactApplicationContext.currentActivity, withPermalink)
   }
 
   @ReactMethod
   fun showCategory(withPermalink: String){
-    ZDPortalKB.showCategoryWithPermalink(currentActivity, withPermalink)
+    ZDPortalKB.showCategoryWithPermalink(reactApplicationContext.currentActivity, withPermalink)
   }
 
   @ReactMethod

@@ -28,7 +28,7 @@ class RNZohoDeskPortalSubmitTicketModule(reactContext: ReactApplicationContext) 
 
  @ReactMethod
   fun show() {
-      ZDPortalSubmitTicket.show(currentActivity)
+      ZDPortalSubmitTicket.show(reactApplicationContext.currentActivity)
   }
 
 

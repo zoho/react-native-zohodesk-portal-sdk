@@ -17,7 +17,7 @@ class RNZDPortalCommunityModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun show() {
-    ZDPortalCommunity.show(currentActivity);
+    ZDPortalCommunity.show(reactApplicationContext.currentActivity);
   }
 
   @ReactMethod
@@ -37,7 +37,7 @@ class RNZDPortalCommunityModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun showTopic(permalink: String){
-    ZDPortalCommunity.showTopicWithPermaLink(currentActivity,permalink)
+    ZDPortalCommunity.showTopicWithPermaLink(reactApplicationContext.currentActivity,permalink)
   }
   
   companion object {
