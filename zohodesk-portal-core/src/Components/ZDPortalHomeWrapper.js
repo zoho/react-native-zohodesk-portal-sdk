@@ -1,5 +1,6 @@
-const {NativeModules} = require('react-native');
-const {RNZohoDeskPortalHome} = NativeModules;
+const {NativeEventEmitter, NativeModules, DeviceEventEmitter, Platform} = require('react-native');
+const {RNZohoDeskPortalHome, RNHomeProviderActionDelegate} = NativeModules;
+const eventEmitter = Platform.OS == 'ios' ? new NativeEventEmitter(RNHomeProviderActionDelegate) : DeviceEventEmitter;
 
 module.exports = {
 
@@ -9,6 +10,7 @@ module.exports = {
 
     setConfiguration: function(ZDPHomeConfiguration = {}){
       const config = {
+        enableHeaderLogo: ZDPHomeConfiguration?.enableHeaderLogo ?? true,
         enableCommunity: ZDPHomeConfiguration?.enableCommunity ?? true,
         enableHelpCenter: ZDPHomeConfiguration?.enableHelpCenter ?? true,
         enableMyTicket: ZDPHomeConfiguration?.enableMyTicket ?? true,
@@ -20,6 +22,10 @@ module.exports = {
         showBM: ZDPHomeConfiguration?.showBM ?? true
       };
       RNZohoDeskPortalHome.updateConfiguration(config);
-  }
+  },
 
+  setDismissObserver: function(callback){
+    RNZohoDeskPortalHome.backActionEvent()
+    return eventEmitter.addListener('onBackTap', callback);
+  }
 }

@@ -1,5 +1,6 @@
 package com.zohodeskportalchatkit
 
+import androidx.annotation.ColorInt
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -14,6 +15,14 @@ import com.zohodeskportalapikit.Converter
 class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
   private val reactContext: ReactApplicationContext = reactContext
+
+  companion object{
+
+    @JvmStatic
+    fun setNavBarColor(@ColorInt color: Int, isDark: Boolean) {
+      ZohoDeskPortalChatKit.setNavBarTextColor(color,isDark)
+    }
+  }
 
   override fun getName(): String {
       return "RNZohoDeskPortalChatKit"
@@ -48,6 +57,7 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   fun showBM() {
     ZohoDeskPortalChatKit.showBM(reactApplicationContext.currentActivity)
   }
+
 
   private fun sessionVariableConverter(params: ReadableArray): ArrayList<HashMap<String, Any>> {
     val jsonObject = Converter.convertReadableArrayToJson(params)
@@ -86,5 +96,10 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
       reactApplicationContext.currentActivity,
       sessionVariableConverter(params)
     )
+  }
+
+  @ReactMethod
+  fun hideEndChatPopupWindow(isHide:Boolean){
+    ZohoDeskPortalChatKit.hideEndChatPopupWindow(isHide)
   }
 }
