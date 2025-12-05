@@ -1,5 +1,5 @@
-const {NativeModules} = require('react-native');
-const {RNZohoDeskPortalHome} = NativeModules;
+const {NativeEventEmitter, NativeModules} = require('react-native');
+const {RNZohoDeskPortalHome, RNHomeProviderActionDelegate} = NativeModules;
 
 module.exports = {
 
@@ -20,6 +20,10 @@ module.exports = {
         showBM: ZDPHomeConfiguration?.showBM ?? true
       };
       RNZohoDeskPortalHome.updateConfiguration(config);
+  },
+
+  dismissObserver: function() {
+    RNHomeProviderActionDelegate.backActionEvent();
   }
 
 }
