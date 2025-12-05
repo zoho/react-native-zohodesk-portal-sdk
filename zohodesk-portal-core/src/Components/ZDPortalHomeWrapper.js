@@ -1,6 +1,6 @@
-const {NativeEventEmitter, NativeModules} = require('react-native');
+const {NativeEventEmitter, NativeModules, DeviceEventEmitter, Platform} = require('react-native');
 const {RNZohoDeskPortalHome, RNHomeProviderActionDelegate} = NativeModules;
-const eventEmitter = new NativeEventEmitter(RNHomeProviderActionDelegate);
+const eventEmitter = Platform.OS == 'ios' ? new NativeEventEmitter(RNHomeProviderActionDelegate) : DeviceEventEmitter;
 
 let dismissObserver = null;
 
@@ -26,14 +26,8 @@ module.exports = {
       RNZohoDeskPortalHome.updateConfiguration(config);
   },
 
-  setDismissObserver: function(callback) {
-    dismissObserver = callback;
+  setDismissObserver: function(callback){
+    RNZohoDeskPortalHome.backActionEvent()
+    return eventEmitter.addListener('onBackTap', callback);
   }
-
 }
-
-eventEmitter.addListener("onBackTap", (event) => {
-  if (dismissObserver && typeof dismissObserver === 'function') {
-    dismissObserver();
-  }
-});
