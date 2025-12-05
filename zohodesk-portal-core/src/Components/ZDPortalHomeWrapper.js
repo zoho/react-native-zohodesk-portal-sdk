@@ -2,8 +2,6 @@ const {NativeEventEmitter, NativeModules, DeviceEventEmitter, Platform} = requir
 const {RNZohoDeskPortalHome, RNHomeProviderActionDelegate} = NativeModules;
 const eventEmitter = Platform.OS == 'ios' ? new NativeEventEmitter(RNHomeProviderActionDelegate) : DeviceEventEmitter;
 
-let dismissObserver = null;
-
 module.exports = {
 
     show: function() {
