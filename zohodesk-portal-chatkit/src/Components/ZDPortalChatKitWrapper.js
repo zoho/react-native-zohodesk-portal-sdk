@@ -1,4 +1,4 @@
-const {NativeModules} = require('react-native');
+const {NativeModules,Platform} = require('react-native');
 const {RNZohoDeskPortalChatKit} = NativeModules;
 
 module.exports = {
@@ -32,6 +32,13 @@ module.exports = {
     },
     clearAnswerBot: function() {
         RNZohoDeskPortalChatKit.clearAnswerBot();
+    },
+    hideEndChatPopupWindow:function(isHide) {
+        if (Platform.OS === 'android' && RNZohoDeskPortalChatKit?.hideEndChatPopupWindow) {
+            RNZohoDeskPortalChatKit.hideEndChatPopupWindow(isHide)
+        }else {
+            console.warn('hideEndChatPopupWindow is only available on Android.');
+          }   
     }
 
 }
