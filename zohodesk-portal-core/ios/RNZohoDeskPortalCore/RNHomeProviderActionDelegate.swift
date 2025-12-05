@@ -7,11 +7,13 @@
 
 import Foundation
 import React
+import ZohoDeskPortalCore
 
 @objc(RNHomeProviderActionDelegate)
-class RNHomeProviderActionDelegate: RCTEventEmitter {
+class RNHomeProviderActionDelegate: RCTEventEmitter, ZDPHomeProviderDelegate {
+    
 
-    private static var emitter: RNHomeProviderActionDelegate?
+    internal static var emitter: RNHomeProviderActionDelegate?
 
     override init() {
         super.init()
@@ -23,9 +25,8 @@ class RNHomeProviderActionDelegate: RCTEventEmitter {
     }
 
     // Public method callable from anywhere in Swift
-    @objc
-    static func backActionEvent() {
-      emitter?.sendEvent(withName: HomeActions.backAction.rawValue, body: [:])
+    func backButtonTapped() {
+        RNHomeProviderActionDelegate.emitter?.sendEvent(withName: HomeActions.backAction.rawValue, body: [:])
     }
 }
 

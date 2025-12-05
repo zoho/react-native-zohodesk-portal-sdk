@@ -9,5 +9,4 @@
 #import <React/RCTEventEmitter.h>
 
 @interface RCT_EXTERN_MODULE(RNHomeProviderActionDelegate, RCTEventEmitter)
-RCT_EXTERN_METHOD(backActionEvent)
 @end

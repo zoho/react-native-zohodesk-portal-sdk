@@ -11,5 +11,6 @@
 @interface RCT_EXTERN_MODULE(RNZohoDeskPortalHome, NSObject)
 RCT_EXTERN_METHOD(updateConfiguration:(NSDictionary *)configDictionary)
 RCT_EXTERN_METHOD(show)
+RCT_EXTERN_METHOD(backActionEvent)
 @end
 

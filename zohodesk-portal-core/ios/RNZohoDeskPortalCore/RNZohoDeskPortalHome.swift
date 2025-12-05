@@ -37,5 +37,10 @@ class RNZohoDeskPortalHome: NSObject {
     
     ZDPortalHome.updateConfiguration(with: configuration)
   }
+    
+    @objc
+    func backActionEvent() {
+        ZDPortalHome.shared.actionDelegate = RNHomeProviderActionDelegate.emitter
+    }
 }
 
