@@ -24,7 +24,7 @@ class RNZohoDeskPortalHome: NSObject {
   @objc
   func updateConfiguration(_ configDictionary: [String: Any]) {
     let configuration = ZDPHomeConfiguration()
-
+    configuration.enableHeaderLogo = configDictionary["enableHeaderLogo"] as? Bool ?? true
     configuration.enableCommunity = configDictionary["enableCommunity"] as? Bool ?? true
     configuration.enableHelpCenter = configDictionary["enableHelpCenter"] as? Bool ?? true
     configuration.enableMyTicket = configDictionary["enableMyTicket"] as? Bool ?? true
