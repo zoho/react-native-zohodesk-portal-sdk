@@ -1,7 +1,7 @@
 {
   "name": "@zohocorp/zohodesk-portal-chatkit",
-  "version": "3.4.2",
-  "description": "ZohoDeskPortalChatkit", 
+  "version": "3.4.3",
+  "description": "ZohoDeskPortalChatkit",
    "source": "index.js",
   "repository": {
     "type": "git",
@@ -18,6 +18,6 @@
     "Desk"
   ],
   "peerDependencies": {
-    "@zohocorp/zohodesk-portal-configuration": "3.4.2"
+    "@zohocorp/zohodesk-portal-configuration": "3.4.3"
   }
 }

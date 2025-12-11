@@ -2,3 +2,4 @@
 -keep public class com.zohodeskportalcore.RNZohodeskPortalCoreModule {*;}
 -keep public class com.zohodeskportalcore.RNZohodeskPortalCoreModule$Companion {*;}
 -keep public class com.zohodeskportalcore.RNZohodeskPortalCorePackage {*;}
+-keep class com.zohodeskportalcore.RNZohodeskPortalCoreModule$backActionEvent$1$tapListener$1 {*;}
