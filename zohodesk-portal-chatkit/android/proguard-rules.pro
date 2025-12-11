@@ -1,3 +1,4 @@
 -dontwarn kotlinx.parcelize.Parcelize
 -keep public class com.zohodeskportalchatkit.RNZohoDeskPortalChatkitModule {*;}
 -keep public class com.zohodeskportalchatkit.RNZohoDeskPortalChatkitPackage {*;}
+-keep public class com.zohodeskportalchatkit.RNZohoDeskPortalChatkitModule$Companion {*;}
