@@ -138,6 +138,11 @@ class RNZDPoratalSalesIQModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
+  fun setChatBrandDetails(appKey: String,accessKey: String) {
+      ZohoDeskPortalSalesIQ.setChatBrandDetails(reactApplicationContext.applicationContext,appKey,accessKey);
+  }
+
+  @ReactMethod
   fun syncThemeWithOSForAndroid(sync: Boolean) {
     ZohoDeskPortalSalesIQ.syncThemeWithOS(sync);
   }
