@@ -3,6 +3,7 @@
 
 import Foundation
 import ZohoDeskPortalSalesIQ
+import ZohoDeskPortalConfiguration
 import React
 
 @objc(RNZohoDeskPortalSalesIQ)
@@ -94,6 +95,11 @@ class RNZohoDeskPortalSalesIQ: NSObject {
                 RNSIQEventEmitter.emitErrorEvent(message: "Initialization failed")
             }
         )
+    }
+
+    @objc
+    func setChatBrandDetails(_ appKey:String,accessKey:String) {
+        ZDPortalConfiguration.setChatBrandDetails(appKey: appKey, accessKey: accessKey)
     }
 
     private func mapStringToVisibilityMode(_ mode: String) -> ZohoDeskPortalSalesIQ.ZDPSalesIQComponents.VisibilityMode{
