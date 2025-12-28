@@ -34,11 +34,7 @@ module.exports = {
         RNZohoDeskPortalChatKit.clearAnswerBot();
     },
     hideEndChatPopupWindow:function(isHide) {
-        if (Platform.OS === 'android' && RNZohoDeskPortalChatKit?.hideEndChatPopupWindow) {
-            RNZohoDeskPortalChatKit.hideEndChatPopupWindow(isHide)
-        }else {
-            console.warn('hideEndChatPopupWindow is only available on Android.');
-          }   
+        RNZohoDeskPortalChatKit.hideEndChatPopupWindow(isHide);
     }
 
 }

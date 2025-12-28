@@ -48,6 +48,10 @@ const RNZohoDeskPortalSalesIQWrapper = {
     showOfflineMessage: function(show){
       RNZohoDeskPortalSalesIQ.showOfflineMessage(show);
     },
+
+    setChatBrandDetails:function(appKey,accessKey) {
+       RNZohoDeskPortalSalesIQ.setChatBrandDetails(appKey,accessKey);
+    },
     
     showLauncher: function(mode){
       RNZohoDeskPortalSalesIQ.showLauncher(mode);

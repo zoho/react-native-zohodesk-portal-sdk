@@ -16,4 +16,5 @@ RCT_EXTERN_METHOD(setLoggerEnabled:(BOOL *)enable)
 RCT_EXTERN_METHOD(showOfflineMessage:(BOOL *)show)
 RCT_EXTERN_METHOD(showLauncher:(NSString *)mode)
 RCT_EXTERN_METHOD(setCallbackOnInit)
+RCT_EXTERN_METHOD(setChatBrandDetails:(NSString *)appKey accessKey:(NSString *)accessKey)
 @end

@@ -56,6 +56,11 @@ class RNZohoDeskPortalChatKit: NSObject {
     func updateBMSessionVariable(_ sessionVariables: [[String: Any]]){
       ZDPortalChatKit.updateBMSessionVariable(sessionVariables: sessionVariables)
     }
+
+    @objc
+    func hideEndChatPopupWindow(_ isHide: Bool){
+      ZDPortalChatKit.hideEndChatPopupWindow(isHide: isHide)
+    }
   
   @objc
   func clearGC() {
