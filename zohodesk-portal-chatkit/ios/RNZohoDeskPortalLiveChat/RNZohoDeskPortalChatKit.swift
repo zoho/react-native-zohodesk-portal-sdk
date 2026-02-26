@@ -59,7 +59,7 @@ class RNZohoDeskPortalChatKit: NSObject {
 
     @objc
     func hideEndChatPopupWindow(_ isHide: Bool){
-      ZDPortalChatKit.hideEndChatPopupWindow(isHide: isHide)
+      ZDPortalChatKit.hideEndChatPopupWindow(disable: isHide)
     }
   
   @objc
