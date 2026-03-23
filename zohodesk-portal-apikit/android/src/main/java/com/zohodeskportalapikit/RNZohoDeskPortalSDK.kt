@@ -57,6 +57,9 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
                 "jp" -> dc = ZohoDeskPortalSDK.DataCenter.JP
                 "ca" -> dc = ZohoDeskPortalSDK.DataCenter.CA
                 "sa" -> dc = ZohoDeskPortalSDK.DataCenter.SA
+                "sg" -> dc = ZohoDeskPortalSDK.DataCenter.SG
+                "inec" -> dc = ZohoDeskPortalSDK.DataCenter.INEC
+                "uae" -> dc = ZohoDeskPortalSDK.DataCenter.UAE
             }
             portalSDK.initDesk(orgId.toLong(), appId, dc)
         }
