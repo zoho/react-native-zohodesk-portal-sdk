@@ -12,6 +12,8 @@
     RCT_EXTERN_METHOD(setBMSessionVariable:(NSArray *)sessionVariable)
     RCT_EXTERN_METHOD(updateBMSessionVariable:(NSArray *)sessionVariable)
     RCT_EXTERN_METHOD(hideEndChatPopupWindow:(BOOL)isHide)
+    RCT_EXTERN_METHOD(setGCConfiguration:(NSDictionary *)configDictionary)
+    RCT_EXTERN_METHOD(setBMConfiguration:(NSDictionary *)configDictionary)
     RCT_EXTERN_METHOD(clearGC)
     RCT_EXTERN_METHOD(clearBM)
     RCT_EXTERN_METHOD(clearAnswerBot)
