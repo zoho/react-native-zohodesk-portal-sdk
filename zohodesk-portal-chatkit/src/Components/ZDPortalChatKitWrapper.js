@@ -35,6 +35,18 @@ module.exports = {
     },
     hideEndChatPopupWindow:function(isHide) {
         RNZohoDeskPortalChatKit.hideEndChatPopupWindow(isHide);
+    },
+    setGCConfiguration: function(ZDGCConfiguration={}){
+      const config = {
+        enabelLanguagePicker: ZDGCConfiguration?.enabelLanguagePicker ?? false
+      };
+      RNZohoDeskPortalChatKit.setGCConfiguration(config);
+    },
+    setBMConfiguration: function(ZDBMConfiguration={}){
+      const config = {
+        disableMoreOption: ZDBMConfiguration?.disableMoreOption ?? false
+      };
+      RNZohoDeskPortalChatKit.setBMConfiguration(config);
     }
 
 }

@@ -61,6 +61,16 @@ class RNZohoDeskPortalChatKit: NSObject {
     func hideEndChatPopupWindow(_ isHide: Bool){
       ZDPortalChatKit.hideEndChatPopupWindow(disable: isHide)
     }
+
+    @objc
+    func setGCConfiguration(_ configDictionary: [String: Any]) {
+      ZDPortalGCConfiguration.enabelLanguagePicker = configDictionary["enabelLanguagePicker"] as? Bool ?? true
+    }
+
+    @objc
+    func setBMConfiguration(_ configDictionary: [String: Any]) {
+      ZDPortalBMConfiguration.setMoreOptionVisibility(isVisible: configDictionary["disableMoreOption"] as? Bool ?? false)
+    }
   
   @objc
   func clearGC() {

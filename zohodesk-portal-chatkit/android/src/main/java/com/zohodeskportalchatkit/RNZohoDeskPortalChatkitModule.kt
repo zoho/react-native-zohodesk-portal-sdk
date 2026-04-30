@@ -5,12 +5,16 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableArray
+import com.facebook.react.bridge.ReadableMap
 import com.zoho.desk.asap.chatkit.ZohoDeskPortalChatKit
+import com.zoho.desk.asap.chatkit.utils.ZDBMConfiguration
+import com.zoho.desk.asap.chatkit.utils.ZDGCConfiguration
 import com.google.gson.Gson
 import java.util.ArrayList
 import java.util.HashMap
 import com.google.gson.reflect.TypeToken
 import com.zohodeskportalapikit.Converter
+import com.zohodeskportalapikit.Converter.getBooleanOrDefault
 
 class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
@@ -101,5 +105,23 @@ class RNZohoDeskPortalChatkitModule(reactContext: ReactApplicationContext) :
   @ReactMethod
   fun hideEndChatPopupWindow(isHide:Boolean){
     ZohoDeskPortalChatKit.hideEndChatPopupWindow(isHide)
+  }
+
+  @ReactMethod
+  fun setGCConfiguration(config: ReadableMap) {
+    val configuration = ZDGCConfiguration.Builder()
+      .isLanguagePickerEnabled(config.getBooleanOrDefault("enableLanguagePicker", config.getBooleanOrDefault("enabelLanguagePicker", default = true)))
+      .build()
+
+    ZohoDeskPortalChatKit.setGCConfiguration(configuration)
+  }
+
+  @ReactMethod
+  fun setBMConfiguration(config: ReadableMap) {
+    val configuration = ZDBMConfiguration.Builder()
+      .disableMoreOption(config.getBooleanOrDefault("disableMoreOption", default = false))
+      .build()
+
+    ZohoDeskPortalChatKit.setBMConfiguration(configuration)
   }
 }
