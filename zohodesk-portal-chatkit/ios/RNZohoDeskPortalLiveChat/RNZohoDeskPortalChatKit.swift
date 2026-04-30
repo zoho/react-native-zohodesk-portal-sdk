@@ -64,12 +64,12 @@ class RNZohoDeskPortalChatKit: NSObject {
 
     @objc
     func setGCConfiguration(_ configDictionary: [String: Any]) {
-      ZDPortalGCConfiguration.enabelLanguagePicker = configDictionary["enabelLanguagePicker"] as? Bool ?? true
+      ZDPortalGCConfiguration.enabelLanguagePicker = configDictionary["enableLanguagePicker"] as? Bool ?? true
     }
 
     @objc
     func setBMConfiguration(_ configDictionary: [String: Any]) {
-      ZDPortalBMConfiguration.setMoreOptionVisibility(isVisible: configDictionary["disableMoreOption"] as? Bool ?? false)
+      ZDPortalBMConfiguration.setMoreOptionVisibility(isVisible: !(configDictionary["disableMoreOption"] as? Bool ?? true))
     }
   
   @objc
