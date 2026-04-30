@@ -69,7 +69,7 @@ class RNZohoDeskPortalChatKit: NSObject {
 
     @objc
     func setBMConfiguration(_ configDictionary: [String: Any]) {
-      ZDPortalBMConfiguration.setMoreOptionVisibility(isVisible: !(configDictionary["disableMoreOption"] as? Bool ?? true))
+      ZDPortalBMConfiguration.setMoreOptionVisibility(isVisible: !(configDictionary["disableMoreOption"] as? Bool ?? false))
     }
   
   @objc
