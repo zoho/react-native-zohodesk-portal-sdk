@@ -38,7 +38,7 @@ module.exports = {
     },
     setGCConfiguration: function(ZDGCConfiguration={}){
       const config = {
-        enabelLanguagePicker: ZDGCConfiguration?.enabelLanguagePicker ?? false
+        enableLanguagePicker: ZDGCConfiguration?.enableLanguagePicker ?? false
       };
       RNZohoDeskPortalChatKit.setGCConfiguration(config);
     },
