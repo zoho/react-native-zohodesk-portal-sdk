@@ -64,7 +64,7 @@ class RNZohoDeskPortalChatKit: NSObject {
 
     @objc
     func setGCConfiguration(_ configDictionary: [String: Any]) {
-      ZDPortalGCConfiguration.enabelLanguagePicker = configDictionary["enableLanguagePicker"] as? Bool ?? true
+      ZDPortalGCConfiguration.enabelLanguagePicker = configDictionary["enableLanguagePicker"] as? Bool ?? false
     }
 
     @objc
