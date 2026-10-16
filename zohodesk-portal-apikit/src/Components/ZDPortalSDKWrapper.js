@@ -9,6 +9,7 @@ import { TicketField } from "../Models/TIcketField";
 import { TicketForm } from "../Models/TicketForm";
 import { ZDPTopic } from "../Models/ZDPTopic";
 import { ZDPTicket } from "../Models/ZDPTicket";
+import { ZDPCountry } from "../Models/ZDPCountry";
 
 const ZDPortalSDKWrapper = {
 
@@ -55,6 +56,17 @@ const ZDPortalSDKWrapper = {
         },errorCallback);
     },
 
+    getCountries: function(successCallback,errorCallback) {
+        RNZohoDeskPortalSDK.getCountries((countries)=>{
+            successCallback(JSON.parse(countries).map(country => ZDPCountry.fromJSON(country)));
+        },errorCallback);
+    },
+    // Returns a plain object map of time zones, e.g. { "Asia/Kolkata": "(GMT 5:30) India Standard Time" }
+    getTimeZones: function(successCallback,errorCallback) {
+        RNZohoDeskPortalSDK.getTimeZones((timeZones)=>{
+            successCallback(JSON.parse(timeZones));
+        },errorCallback);
+    },
     getLayouts: function(params,successCallback,errorCallback) {
         RNZohoDeskPortalSDK.getLayouts(params,(formLayout)=>{
             const formLayouts = JSON.parse(formLayout).map(layout => FormLayout.fromJSON(layout));
@@ -90,6 +102,11 @@ const ZDPortalSDKWrapper = {
         },errorCallback);
     },
 
+    getUserInformation: function(successCallback,errorCallback) {
+        RNZohoDeskPortalSDK.getUserInformation((userInfo)=>{
+            successCallback(ZDPProfile.fromJSON(JSON.parse(userInfo)));
+        },errorCallback);
+    },
     updateUserInformation: function(params,successCallback,errorCallback) {
         RNZohoDeskPortalSDK.updateUserInformation(params,(userInfo)=>{
             successCallback(ZDPProfile.fromJSON(JSON.parse(userInfo)));

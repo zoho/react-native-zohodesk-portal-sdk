@@ -22,7 +22,7 @@ export class ZDPProfile{
             data.mobile,
             data.timeZone,
             data.fullName,
-            data.emailId,
+            data.emailId ?? data.emailID, // Android: emailId, iOS: emailID
             data.countryLocale,
             data.photoURL,
             data.twitter,

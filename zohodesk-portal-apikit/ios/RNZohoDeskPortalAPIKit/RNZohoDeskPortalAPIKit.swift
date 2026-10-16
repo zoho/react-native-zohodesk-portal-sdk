@@ -124,6 +124,20 @@ class RNZohoDeskPortalSDK: NSObject {
         }
     }
     
+    @objc
+    func getCountries(_ successCallback: @escaping RCTResponseSenderBlock, errorCallback: @escaping RCTResponseSenderBlock) {
+        ZohoDeskPortalSDK.getCountries { countries, error in
+            self.handleCallback(result: countries, error: error, successCallback: successCallback, errorCallback: errorCallback)
+        }
+    }
+    
+    @objc
+    func getTimeZones(_ successCallback: @escaping RCTResponseSenderBlock, errorCallback: @escaping RCTResponseSenderBlock) {
+        ZohoDeskPortalSDK.getTimeZones { timeZones, error in
+            self.handleCallback(result: timeZones, error: error, successCallback: successCallback, errorCallback: errorCallback)
+        }
+    }
+    
     
     @objc
     func getLayouts(_ params: [String: Any],
@@ -184,6 +198,13 @@ class RNZohoDeskPortalSDK: NSObject {
         }
     }
     
+    @objc
+    func getUserInformation(_ successCallback: @escaping RCTResponseSenderBlock, errorCallback: @escaping RCTResponseSenderBlock) {
+        ZohoDeskPortalSDK.getUserInformation { profile, error in
+            self.handleCallback(result: profile, error: error, successCallback: successCallback, errorCallback: errorCallback)
+        }
+    }
+
     @objc
     func updateUserInformation(_ userInfo: [String: String],
                                 successCallback: @escaping RCTResponseSenderBlock,

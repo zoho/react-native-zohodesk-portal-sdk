@@ -39,11 +39,10 @@ class RNZDPoratalSalesIQModule(reactContext: ReactApplicationContext) :
 
   @ReactMethod
   fun setChatVisibility(component: String, visible: Boolean) {
-    val chatComponent = mapStringToChatComponent(component)
-    if (chatComponent == null) {
-      return
+    // One JS component can map to several native components (e.g. mediaCapture -> photo + video)
+    mapStringToChatComponents(component).forEach { chatComponent ->
+      ZohoDeskPortalSalesIQ.setChatVisibility(chatComponent, visible)
     }
-    ZohoDeskPortalSalesIQ.setChatVisibility(chatComponent, visible)
   }
 
   @ReactMethod
@@ -117,23 +116,25 @@ class RNZDPoratalSalesIQModule(reactContext: ReactApplicationContext) :
     }
   }
 
-  private fun mapStringToChatComponent(component: String): Component? {
+  private fun mapStringToChatComponents(component: String): List<Component> {
     return when (component) {
-      "preChatForm" -> Component.PRECHAT_FORM
-      "visitorName" -> Component.VISITOR_NAME
-      "screenshotOption" -> Component.SCREENSHOT
-      "mediaCapture" -> Component.MEDIA_CAPTURE
-      "fileSharing" -> Component.FILE_SHARE
-      "emailTranscript" -> Component.EMAIL_TRANSCRIPT
-      "rating" -> Component.RATING
-      "feedback" -> Component.FEEDBACK
-      "reopen" -> Component.REOPEN
-      "end" -> Component.END
-      "endWhenInQueue" -> Component.END_WHEN_IN_QUEUE
-      "endWhenBotConnected" -> Component.END_WHEN_BOT_CONNECTED
-      "endWhenOperatorConnected" -> Component.END_WHEN_OPERATOR_CONNECTED
-      "queuePosition" -> Component.QUEUE_POSITION
-      else -> null
+      "preChatForm" -> listOf(Component.PRECHAT_FORM)
+      "visitorName" -> listOf(Component.VISITOR_NAME)
+      "screenshotOption" -> listOf(Component.SCREENSHOT)
+      // asap-siq 4.6.16 split MEDIA_CAPTURE into TAKE_PHOTO and RECORD_VIDEO
+      "mediaCapture" -> listOf(Component.TAKE_PHOTO, Component.RECORD_VIDEO)
+      "photoLibrary" -> listOf(Component.GALLERY)
+      "fileSharing" -> listOf(Component.FILE_SHARE)
+      "emailTranscript" -> listOf(Component.EMAIL_TRANSCRIPT)
+      "rating" -> listOf(Component.RATING)
+      "feedback" -> listOf(Component.FEEDBACK)
+      "reopen" -> listOf(Component.REOPEN)
+      "end" -> listOf(Component.END)
+      "endWhenInQueue" -> listOf(Component.END_WHEN_IN_QUEUE)
+      "endWhenBotConnected" -> listOf(Component.END_WHEN_BOT_CONNECTED)
+      "endWhenOperatorConnected" -> listOf(Component.END_WHEN_OPERATOR_CONNECTED)
+      "queuePosition" -> listOf(Component.QUEUE_POSITION)
+      else -> emptyList()
     }
   }
 
