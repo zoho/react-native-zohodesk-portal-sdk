@@ -21,6 +21,7 @@ import com.zoho.desk.asap.api.ZDPortalAPI
 import com.zoho.desk.asap.api.response.Layouts
 import com.zoho.desk.asap.api.util.ZohoDeskAPIImpl
 import com.zoho.desk.asap.api.response.DepartmentsList
+import com.zoho.desk.asap.api.response.DeskCountryList
 import com.zoho.desk.asap.api.ZDPortalCommunityAPI
 import com.zoho.desk.asap.api.response.DeskTopicsList
 import com.zoho.desk.asap.api.response.ProductsList
@@ -197,6 +198,43 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
         }
     }
 
+    @ReactMethod
+    fun getCountries(successCallback: Callback, errorCallback: Callback) {
+        Handler(Looper.getMainLooper()).post {
+            val countryCallback = object : ZDPortalCallback.CountryCallback {
+                override fun onCountrySuccess(countryList: DeskCountryList) {
+                    successCallback.invoke(Gson().toJson(countryList.data ?: arrayListOf<Any>()))
+                }
+
+                override fun onException(exception: ZDPortalException) {
+                    errorCallback.invoke(exceptionToMap(exception))
+                }
+            }
+            ZDPortalAPI.getCountryList(countryCallback, null)
+        }
+    }
+
+    @ReactMethod
+    fun getTimeZones(successCallback: Callback, errorCallback: Callback) {
+        Handler(Looper.getMainLooper()).post {
+            val timeZoneCallback = object : ZDPortalCallback.TimeZoneCallback {
+                override fun onTimeZoneSuccess(timeZones: Map<String, String>) {
+                    successCallback.invoke(Gson().toJson(timeZones))
+                }
+
+                override fun onException(exception: ZDPortalException) {
+                    errorCallback.invoke(exceptionToMap(exception))
+                }
+            }
+            ZDPortalAPI.getTimeZoneList(timeZoneCallback, null)
+        }
+    }
+
+    private fun exceptionToMap(exception: ZDPortalException) = Arguments.createMap().apply {
+        putInt("errorCode", exception.errorCode)
+        putString("errorMsg", exception.errorMsg)
+    }
+
     private fun handleLogin(context: Context, token: String, successCallback: Callback, errorCallback: Callback, isJWTToken: Boolean) {
         Handler(Looper.getMainLooper()).post {
             val deskPortalSDK = ZohoDeskPortalSDK.getInstance(context)
@@ -206,7 +244,7 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
                 }
 
                 override fun onException(e: ZDPortalException) {
-                    errorCallback.invoke("User set Failure")
+                    errorCallback.invoke("User set Failure: ${e.errorMsg} (${e.errorCode})")
                 }
             }
             if (isJWTToken) {
@@ -344,6 +382,22 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
         }
     }
     
+
+    @ReactMethod
+    fun getUserInformation(successCallback: Callback, errorCallback: Callback) {
+        Handler(Looper.getMainLooper()).post {
+            val userDetailsCallback = object : ZDPortalCallback.UserDetailsCallback {
+                override fun onUserDetailsSuccess(userProfile: DeskUserProfile) {
+                    successCallback.invoke(Gson().toJson(userProfile))
+                }
+
+                override fun onException(exception: ZDPortalException) {
+                    errorCallback.invoke(exceptionToMap(exception))
+                }
+            }
+            ZDPortalAPI.getProfileDetails(userDetailsCallback)
+        }
+    }
 
     @ReactMethod
     fun updateUserInformation(params: ReadableMap, successCallback: Callback, errorCallback: Callback) {
