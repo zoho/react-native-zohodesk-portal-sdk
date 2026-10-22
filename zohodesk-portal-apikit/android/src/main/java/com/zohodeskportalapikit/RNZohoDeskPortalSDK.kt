@@ -102,8 +102,10 @@ class RNZohoDeskPortalSDK(private val reactContext: ReactApplicationContext) : R
     @ReactMethod
     fun isUserSignedIn(callback: Callback) {
         getCurrentActivity()?.let {
-            val deskPortalSDK = ZohoDeskPortalSDK.getInstance(it.applicationContext)
-            callback.invoke(deskPortalSDK.isUserSignedIn())
+            Handler(Looper.getMainLooper()).post {
+                val deskPortalSDK = ZohoDeskPortalSDK.getInstance(it.applicationContext)
+                callback.invoke(deskPortalSDK.isUserSignedIn())
+            }
         }
     }
 
